@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+﻿# 这是 Git 的忽略文件
+
+# 忽略 listing 下所有文件
+/Project/Listings/*
+
+# 忽略 output 下所有文件
+/Project/Objects/*
+=======
+﻿# 这是 Git 的忽略文件
+
+# 忽略 listing 下所有文件
+/Project/Listings/*
+
+# 忽略 output 下所有文件
+/Project/Objects/*
+>>>>>>> updata
