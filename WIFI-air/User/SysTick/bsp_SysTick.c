@@ -1,82 +1,95 @@
-/**
-  ******************************************************************************
-  * @file    bsp_SysTick.c
-  * @author  fire
-  * @version V1.0
-  * @date    2013-xx-xx
-  * @brief   SysTick 系统滴答时钟10us中断函数库,中断时间可自由配置，
-  *          常用的有 1us 10us 1ms 中断。     
-  ******************************************************************************
-  * @attention
-  *
-  * 实验平台:野火 iSO STM32 开发板 
-  * 论坛    :http://www.chuxue123.com
-  * 淘宝    :http://firestm32.taobao.com
-  *
-  ******************************************************************************
-  */
-  
-	
-#include "bsp_SysTick.h"
+#include "bsp_systick.h"
 
+/* 保存延时 1us/1ms 滴答定时器的计数个数 */
+static u8 fac_us = 0;
+static u16 fac_ms = 0;
 
-static __IO u32 TimingDelay = 0;
- 
- 
 /**
-  * @brief  启动系统滴答定时器 SysTick
-  * @param  无
-  * @retval 无
-  */
-void SysTick_Init( void )
+ * @brief 初始化滴答定时器
+ */
+void systick_init(void)
 {
-	/* SystemFrequency / 1000    1ms中断一次
-	 * SystemFrequency / 100000	 10us中断一次
-	 * SystemFrequency / 1000000 1us中断一次
-	 */
-	if ( SysTick_Config(SystemCoreClock / 1000000) )	// ST3.5.0库版本
-	{ 
-		/* Capture error */ 
-		while (1);
-	}
-		// 关闭滴答定时器  
-	SysTick->CTRL &= ~ SysTick_CTRL_ENABLE_Msk;
-	
+        /* 设置滴答定时器的时钟为系统时钟的 8 分频 */
+        SysTick->CTRL &= SysTick_CLKSource_HCLK_Div8;
+
+        /* 系统时钟为 SYSTEM_CLOCK, 滴答定时器的时钟为: ((SYSTEM_CLOCK * 10^6) / 8) */
+        /* 可以算出, 一个计数值的时间是: (8 / (SYSTEM_CLOCK * 10^6)) */
+        /* 那么定时 1us 的计数值就是: ((10^-6 * (SYSTEM_CLOCK * 10^6))/ 8) = (SYSTEM_CLOCK / 8) */
+        fac_us = SYSTEM_CLOCK / 8;
+
+        /* 定时 1ms 的计数值肯定就是 1us 的 1000 倍了 */
+        fac_ms = (u16) fac_us * 1000;
 }
 
-
 /**
-  * @brief   ms延时程序,1us为一个单位
-  * @param  
-  *		@arg nTime: Delay_us( 1 ) 则实现的延时为 1 * 1us = 1us
-  * @retval  无
-  */
-void Delay_us( __IO u32 nTime )
-{ 
-	TimingDelay = nTime;	
-
-	// 使能滴答定时器  
-	SysTick->CTRL |=  SysTick_CTRL_ENABLE_Msk;
-
-	while( TimingDelay != 0 );
-	
-}
-
-
-/**
-  * @brief  获取节拍程序
-  * @param  无
-  * @retval 无
-  * @attention  在 SysTick 中断函数 SysTick_Handler()调用
-  */
-void TimingDelay_Decrement(void)
+ * @brief 延时 nus 微秒
+ * @param nus 延时时间 nus <= 1864135us (最大值即 2^24 / fac_us)
+ */
+void delay_us(u32 nus)
 {
-	if ( TimingDelay != 0x00 )
-	{ 
-		TimingDelay --;
-	}
-	
+        /* 记录读取的滴答定时器控制寄存器 CTRL 数据的临时变量 */
+        u32 temp;
+
+        /* 设置定时器的重装载值为 nus * fac_us */
+        /* 根据定时的时间给滴答定时器加载重装载值 */
+        SysTick->LOAD = nus * fac_us;
+
+        /* 设置滴答定时器的计数值为 0, 清空滴答定时器 */
+        SysTick->VAL = 0;
+
+        /* 开启滴答定时器, 此刻滴答定时器已经默默的在后台开始计时了 */
+        SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
+
+        /* 持续的读取滴答定时器 COUNTFLAG (CTRL的位16), 判断定时是否到达 */
+        /* 定时时间没有到达之前程序一直停在这个死循环里面 */
+        do
+        {
+                temp = SysTick->CTRL;
+        } while ((temp & 0x01) && !(temp & (1 << 16)));
+
+        /* 关闭滴答定时器 */
+        SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+
+        /* 设置滴答定时器的计数值为 0, 清空滴答定时器 */
+        SysTick->VAL = 0;
 }
 
+/**
+ * @brief 延时 nms 毫秒
+ * @param nms 延时时间 nms <= 1864ms 算法同上一个函数
+ */
+static void delay_xms(u16 nms)
+{
+        u32 temp;
+        SysTick->LOAD = (u32) nms * fac_ms;
+        SysTick->VAL = 0x00;
+        SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
+        do
+        {
+                temp = SysTick->CTRL;
+        } while ((temp & 0x01) && !(temp & (1 << 16)));
+        SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+        SysTick->VAL = 0X00;
+}
 
-/*********************************************END OF FILE**********************/
+/**
+ * @brief 延时 nms 毫秒
+ * @param nms 延时时间 nms <= 65535
+ */
+void delay_ms(u16 nms)
+{
+        /* 这个函数其实就是将 nms 分解开来, 分解成为多个 1500ms * repeat + remain */
+        u8 repeat = nms / 1500;
+        u16 remain = nms % 1500;
+
+        while (repeat)
+        {
+                delay_xms(1500);
+                repeat--;
+        }
+
+        if (remain)
+        {
+                delay_xms(remain);
+        }
+}

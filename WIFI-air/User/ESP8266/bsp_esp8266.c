@@ -15,7 +15,7 @@ static void                   ESP8266_USART_NVIC_Configuration    ( void );
 
 struct  STRUCT_USARTx_Fram strEsp8266_Fram_Record = { 0 };
 
-
+u8 order=0;
 
 /**
   * @brief  ESP8266初始化函数
@@ -128,18 +128,18 @@ static void ESP8266_USART_Config ( void )
   */
 static void ESP8266_USART_NVIC_Configuration ( void )
 {
-	NVIC_InitTypeDef NVIC_InitStructure; 
-	
-	
-	/* Configure the NVIC Preemption Priority Bits */  
-	NVIC_PriorityGroupConfig ( macNVIC_PriorityGroup_x );
+        NVIC_InitTypeDef NVIC_InitStructure; 
 
-	/* Enable the USART2 Interrupt */
-	NVIC_InitStructure.NVIC_IRQChannel = macESP8266_USART_IRQ;	 
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
+
+        /* Configure the NVIC Preemption Priority Bits */  
+        NVIC_PriorityGroupConfig ( macNVIC_PriorityGroup_x );
+
+        /* Enable the USART2 Interrupt */
+        NVIC_InitStructure.NVIC_IRQChannel = macESP8266_USART_IRQ;	 
+        NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+        NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+        NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+        NVIC_Init(&NVIC_InitStructure);
 
 }
 
@@ -158,7 +158,7 @@ void ESP8266_Rst ( void )
 
         #else
          macESP8266_RST_LOW_LEVEL();
-         Delay_ms ( 500 ); 
+         delay_ms ( 500 ); 
          macESP8266_RST_HIGH_LEVEL();
         #endif
 
@@ -184,7 +184,7 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
         if ( ( reply1 == 0 ) && ( reply2 == 0 ) )                      //不需要接收数据
                 return true;
 
-        Delay_ms ( waittime );                 //延时
+        delay_ms ( waittime );                 //延时
 
         strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ]  = '\0';
 
@@ -214,7 +214,7 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 //{
 //      macESP8266_RST_HIGH_LEVEL();
 //      
-//      Delay_ms ( 1000 ); 
+//      delay_ms ( 1000 ); 
 //      
 //      while ( ! ESP8266_Cmd ( "AT", "OK", NULL, 500 ) ) ESP8266_Rst (); 
 
@@ -224,7 +224,7 @@ void ESP8266_AT_Test ( void )
         char count=0;
 
         macESP8266_RST_HIGH_LEVEL(); 
-        Delay_ms ( 1000 );
+        delay_ms ( 1000 );
         while ( count < 10 )
         {
                 if( ESP8266_Cmd ( "AT", "OK", NULL, 500 ) ) return;
@@ -542,11 +542,11 @@ bool ESP8266_UnvarnishSend ( void )
  */
 void ESP8266_ExitUnvarnishSend ( void )
 {
-        Delay_ms ( 1000 );
+        delay_ms ( 1000 );
 
         macESP8266_Usart ( "+++" );
 
-        Delay_ms ( 500 ); 
+        delay_ms ( 500 ); 
 
 }
 

@@ -18,3 +18,4 @@
 ..\..\output\stm32f10x_it.o: ..\..\User\Common\common.h
 ..\..\output\stm32f10x_it.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\..\output\stm32f10x_it.o: ..\..\User\Test\test.h
+..\..\output\stm32f10x_it.o: ..\..\User\usart\bsp_usart1.h

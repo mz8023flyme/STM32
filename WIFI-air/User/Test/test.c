@@ -6,11 +6,22 @@
 #include <stdbool.h>
 #include "bsp_dht11.h"
 #include <string.h>
-
+#include "bsp_led.h"
+#include "bsp_infrared_send.h"
+#include "bsp_GeneralTim.h" 
 
 volatile uint8_t ucTcpClosedFlag = 0;
 
 char cStr [ 1500 ] = { 0 };
+
+extern u8 order;
+extern char tem;
+extern u8 on_off_flag;
+extern u8 Code_Tem_26_off[];
+extern u8 Code_Tem_26_on[];
+extern u8 Code_Tem_26_up[];
+extern u8 Code_Tem_26_down[];
+
 
 
 
@@ -22,9 +33,10 @@ char cStr [ 1500 ] = { 0 };
 void ESP8266_StaTcpClient_UnvarnishTest ( void )
 {
         uint8_t ucStatus;
-
-        //char cStr [ 100 ] = { 0 };
-
+        
+        DHT11_Data_TypeDef   DHT11_Data;
+        
+        
         printf ( "\r\n正在配置 ESP8266 ......\r\n" );
 
         macESP8266_CH_ENABLE();  //使能模块的配置
@@ -34,35 +46,70 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
         ESP8266_Net_Mode_Choose ( STA );  //选择工作模式
         //连接WiFi     WiFi名和密码
         while ( ! ESP8266_JoinAP ( macUser_ESP8266_ApSsid, macUser_ESP8266_ApPwd ) ); 
-        printf("WiFi连接[%s][%d]", __func__, __LINE__);
+        printf("WiFi已连接");
         //不配置多连接
         ESP8266_Enable_MultipleId ( DISABLE );
         //连接服务器       服务器协议     服务器IP     服务器端口     模块IP
         while ( ! ESP8266_Link_Server ( enumTCP, macUser_ESP8266_TcpServer_IP, macUser_ESP8266_TcpServer_Port, Single_ID_0 ) );
-        printf("服务器连接[%s][%d]", __func__, __LINE__);
+        printf("服务器已连接");
+        
         ESP8266_Cmd("AT+CIFSR","OK",NULL,500);
-        printf("[%s][%d]", __func__, __LINE__);
+
         //服务器透传
         while ( ! ESP8266_UnvarnishSend () );
 
         printf ( "\r\n配置 ESP8266 完毕\r\n" );
- 
+
 
         while ( 1 )
         {       
-                char Str[]="{\"M\":\"checkin\",\"ID\":\"3115\",\"K\":\"cde8de9b3\"}\n";
-                char shuju[]="{\"M\":\"update\",\"ID\":\"3115\",\"V\":{\"2948\":\"26\"}}\n";
-                        
+                char Str[]="{\"M\":\"checkin\",\"ID\":\"3115\",\"K\":\"52e38a188\"}\n";
+                sprintf ( cStr,"{\"M\":\"update\",\"ID\":\"3115\",\"V\":{\"2948\":\"%d.%d\"}}\n",DHT11_Data.temp_int,DHT11_Data.temp_deci);
+                
+                
+                
                 ESP8266_SendString ( ENABLE, Str, strlen(Str), Single_ID_0 );               //发送数据
-                ESP8266_SendString ( ENABLE, shuju, strlen(shuju),Single_ID_0 );
+                ESP8266_SendString ( ENABLE, cStr, strlen(cStr),Single_ID_0 );
+                
+                
+                /*调用DHT11_Read_TempAndHumidity读取温湿度，若成功则输出该信息*/
+                if( DHT11_Read_TempAndHumidity ( & DHT11_Data ) == SUCCESS)
+                {
+                        printf("\r\n读取DHT11成功!\r\n\r\n湿度为%d.%d ％RH ，温度为 %d.%d℃ \r\n",\
+                        DHT11_Data.humi_int,DHT11_Data.humi_deci,DHT11_Data.temp_int,DHT11_Data.temp_deci);
+                }
+                
+                else
+                {
+                        printf("Read DHT11 ERROR!\r\n");
+                }
+                
+                
+                switch(order)
+                {
+                        case 1 :   
+                                printf("灯翻转\r\n");
+                                LED2_TOGGLE;
+                                order=0;
+                                if(on_off_flag)
+                                {
+                                        Send_infrared_code(Code_Tem_26_off,CODE_SIZE);
+                                        printf("空调off\r\n");
+                                        on_off_flag=~on_off_flag;
+                                }
+                                else
+                                {
+                                        Send_infrared_code(Code_Tem_26_on,CODE_SIZE);
+                                        printf("空调on\r\n");
+                                        on_off_flag=~on_off_flag;
+                                        
+                                }
+                                break;
+                }
                 
                 
                 
-                
-                
-                
-                
-                Delay_ms ( 1000 );
+                delay_ms ( 1000 );
                 
                 
                 
@@ -85,12 +132,12 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 
                         }
                         
-                        while ( ! ESP8266_UnvarnishSend () );   
+                        while ( ! ESP8266_UnvarnishSend () );
                         
                 }
         }
 
-                
+
 }
 
 

@@ -149,7 +149,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>6</TargetSelection>
+          <TargetSelection>12</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -163,7 +163,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>Segger\JL2CM3.dll</Driver>
+            <Driver>BIN\CMSIS_AGDI.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -173,11 +173,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4099</DriverSelection>
+            <DriverSelection>4104</DriverSelection>
           </Flash1>
           <bUseTDR>0</bUseTDR>
-          <Flash2>Segger\JL2CM3.dll</Flash2>
-          <Flash3></Flash3>
+          <Flash2>BIN\CMSIS_AGDI.dll</Flash2>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -361,7 +361,7 @@
             <wLevel>0</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\gpio;..\..\User\SysTick;..\..\User\usart;..\..\User\Common;..\..\User\ESP8266;..\..\User\Test;..\..\User\dht11</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\gpio;..\..\User\SysTick;..\..\User\usart;..\..\User\Common;..\..\User\ESP8266;..\..\User\Test;..\..\User\dht11;..\..\User\LED;..\..\User\GeneralTim;..\..\User\infrared_send</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -583,9 +583,9 @@
           <GroupName>USER</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\main.c</FilePath>
+              <FileName>stm32f10x_it.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\User\stm32f10x_it.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_conf.h</FileName>
@@ -593,24 +593,29 @@
               <FilePath>..\..\User\stm32f10x_conf.h</FilePath>
             </File>
             <File>
+              <FileName>main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\main.c</FilePath>
+            </File>
+            <File>
               <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\stm32f10x_it.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f10x_it.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\User\stm32f10x_it.h</FilePath>
+              <FileName>bsp_SysTick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\SysTick\bsp_SysTick.c</FilePath>
+            </File>
+            <File>
+              <FileName>test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\Test\test.c</FilePath>
             </File>
             <File>
               <FileName>bsp_usart1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\usart\bsp_usart1.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_SysTick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\SysTick\bsp_SysTick.c</FilePath>
             </File>
             <File>
               <FileName>bsp_esp8266.c</FileName>
@@ -628,9 +633,19 @@
               <FilePath>..\..\User\dht11\bsp_dht11.c</FilePath>
             </File>
             <File>
-              <FileName>test.c</FileName>
+              <FileName>bsp_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\User\Test\test.c</FilePath>
+              <FilePath>..\..\User\LED\bsp_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_infrared_send.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\infrared_send\bsp_infrared_send.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_GeneralTim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\GeneralTim\bsp_GeneralTim.c</FilePath>
             </File>
           </Files>
         </Group>

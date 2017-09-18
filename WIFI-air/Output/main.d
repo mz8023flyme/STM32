@@ -18,3 +18,6 @@
 ..\..\output\main.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\..\output\main.o: ..\..\User\Test\test.h
 ..\..\output\main.o: ..\..\User\dht11\bsp_dht11.h
+..\..\output\main.o: ..\..\User\LED\bsp_led.h
+..\..\output\main.o: ..\..\User\infrared_send\bsp_infrared_send.h
+..\..\output\main.o: ..\..\User\GeneralTim\bsp_GeneralTim.h

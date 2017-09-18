@@ -3,10 +3,10 @@
 
 
 
-static void                           DHT11_GPIO_Config                       ( void );
-static void                           DHT11_Mode_IPU                          ( void );
-static void                           DHT11_Mode_Out_PP                       ( void );
-static uint8_t                        DHT11_ReadByte                          ( void );
+static void        DHT11_GPIO_Config  ( void );
+static void        DHT11_Mode_IPU     ( void );
+static void        DHT11_Mode_Out_PP  ( void );
+static uint8_t     DHT11_ReadByte     ( void );
 
 
 
@@ -30,7 +30,7 @@ void DHT11_Init ( void )
  * 输出  ：无
  */
 static void DHT11_GPIO_Config ( void )
-{ 
+{       
         /*定义一个GPIO_InitTypeDef类型的结构体*/
         GPIO_InitTypeDef GPIO_InitStructure;
 
@@ -48,7 +48,7 @@ static void DHT11_GPIO_Config ( void )
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
 
         /*调用库函数，初始化macDHT11_Dout_GPIO_PORT*/
-        GPIO_Init ( macDHT11_Dout_GPIO_PORT, &GPIO_InitStructure );     
+        GPIO_Init ( macDHT11_Dout_GPIO_PORT, &GPIO_InitStructure ); 
 
 }
 
@@ -85,7 +85,7 @@ static void DHT11_Mode_Out_PP(void)
 {
         GPIO_InitTypeDef GPIO_InitStructure;
 
-        /*选择要控制的macDHT11_Dout_GPIO_PORT引脚*/ 
+                /*选择要控制的macDHT11_Dout_GPIO_PORT引脚*/     
         GPIO_InitStructure.GPIO_Pin = macDHT11_Dout_GPIO_PIN; 
 
         /*设置引脚模式为通用推挽输出*/
@@ -95,8 +95,8 @@ static void DHT11_Mode_Out_PP(void)
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 
         /*调用库函数，初始化macDHT11_Dout_GPIO_PORT*/
-        GPIO_Init(macDHT11_Dout_GPIO_PORT, &GPIO_InitStructure); 
-
+        GPIO_Init(macDHT11_Dout_GPIO_PORT, &GPIO_InitStructure);        
+ 
 }
 
 
@@ -116,7 +116,7 @@ static uint8_t DHT11_ReadByte ( void )
                 /*DHT11 以26~28us的高电平表示“0”，以70us高电平表示“1”，
                  *通过检测 x us后的电平即可区别这两个状 ，x 即下面的延时 
                  */
-                Delay_us(40); //延时x us 这个延时需要大于数据0持续的时间即可	   	  
+                delay_us(40); //延时x us 这个延时需要大于数据0持续的时间即可   
 
                 if(macDHT11_Dout_IN()==Bit_SET)/* x us后仍为高电平表示数据“1” */
                 {
@@ -126,7 +126,7 @@ static uint8_t DHT11_ReadByte ( void )
                         temp|=(uint8_t)(0x01<<(7-i));  //把第7-i位置1，MSB先行 
                 }
                 else    // x us后为低电平表示数据“0”
-                { 
+                {      
                         temp&=(uint8_t)~(0x01<<(7-i)); //把第7-i位置0，MSB先行
                 }
         }
@@ -147,12 +147,12 @@ uint8_t DHT11_Read_TempAndHumidity(DHT11_Data_TypeDef *DHT11_Data)
         /*主机拉低*/
         macDHT11_Dout_0;
         /*延时18ms*/
-        Delay_ms(18);
+        delay_ms(18);
 
         /*总线拉高 主机延时30us*/
         macDHT11_Dout_1; 
 
-        Delay_us(30);   //延时30us
+        delay_us(30);   //延时30us
 
         /*主机设为输入 判断从机响应信号*/ 
         DHT11_Mode_IPU();

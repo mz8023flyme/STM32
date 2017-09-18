@@ -18,3 +18,6 @@
 ..\..\output\test.o: ..\..\User\SysTick\bsp_SysTick.h
 ..\..\output\test.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\string.h
 ..\..\output\test.o: ..\..\User\dht11\bsp_dht11.h
+..\..\output\test.o: ..\..\User\LED\bsp_led.h
+..\..\output\test.o: ..\..\User\infrared_send\bsp_infrared_send.h
+..\..\output\test.o: ..\..\User\GeneralTim\bsp_GeneralTim.h
