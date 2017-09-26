@@ -13,7 +13,7 @@
 volatile uint8_t ucTcpClosedFlag = 0;
 
 char cStr [ 1500 ] = { 0 };
-
+char dStr [ 1500 ] = { 0 };
 extern u8 order;
 extern char tem;
 extern u8 on_off_flag;
@@ -65,12 +65,12 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
         {       
                 char Str[]="{\"M\":\"checkin\",\"ID\":\"3115\",\"K\":\"52e38a188\"}\n";
                 sprintf ( cStr,"{\"M\":\"update\",\"ID\":\"3115\",\"V\":{\"2948\":\"%d.%d\"}}\n",DHT11_Data.temp_int,DHT11_Data.temp_deci);
-                
+                sprintf ( dStr,"{\"M\":\"update\",\"ID\":\"3115\",\"V\":{\"2950\":\"%d.%d\"}}\n",DHT11_Data.humi_int,DHT11_Data.humi_deci);
                 
                 
                 ESP8266_SendString ( ENABLE, Str, strlen(Str), Single_ID_0 );               //发送数据
                 ESP8266_SendString ( ENABLE, cStr, strlen(cStr),Single_ID_0 );
-                
+                ESP8266_SendString ( ENABLE, dStr, strlen(cStr),Single_ID_0 );
                 
                 /*调用DHT11_Read_TempAndHumidity读取温湿度，若成功则输出该信息*/
                 if( DHT11_Read_TempAndHumidity ( & DHT11_Data ) == SUCCESS)

@@ -493,44 +493,44 @@ Image Symbol Table
     .text                                    0x08001e6c   Section        0  bsp_systick.o(.text)
     delay_xms                                0x08001ee5   Thumb Code    72  bsp_systick.o(.text)
     .text                                    0x08001f6c   Section        0  test.o(.text)
-    .text                                    0x080022d0   Section        0  bsp_usart1.o(.text)
-    .text                                    0x0800238c   Section        0  bsp_esp8266.o(.text)
-    ESP8266_USART_NVIC_Configuration         0x0800238d   Thumb Code    40  bsp_esp8266.o(.text)
-    ESP8266_USART_Config                     0x080023b5   Thumb Code   148  bsp_esp8266.o(.text)
-    ESP8266_GPIO_Config                      0x08002449   Thumb Code    64  bsp_esp8266.o(.text)
-    .text                                    0x08002b68   Section        0  common.o(.text)
-    itoa                                     0x08002b69   Thumb Code    98  common.o(.text)
-    .text                                    0x08002cd0   Section        0  bsp_dht11.o(.text)
-    DHT11_GPIO_Config                        0x08002cd1   Thumb Code    38  bsp_dht11.o(.text)
-    DHT11_Mode_IPU                           0x08002d07   Thumb Code    24  bsp_dht11.o(.text)
-    DHT11_Mode_Out_PP                        0x08002d1f   Thumb Code    30  bsp_dht11.o(.text)
-    DHT11_ReadByte                           0x08002d3d   Thumb Code    90  bsp_dht11.o(.text)
-    .text                                    0x08002e34   Section        0  bsp_led.o(.text)
-    .text                                    0x08002e94   Section        0  bsp_infrared_send.o(.text)
-    Start_signal                             0x08002e95   Thumb Code    28  bsp_infrared_send.o(.text)
-    Creat_bit_1                              0x08002eb1   Thumb Code    32  bsp_infrared_send.o(.text)
-    Creat_bit_0                              0x08002ed1   Thumb Code    32  bsp_infrared_send.o(.text)
-    End_signal                               0x08002ef1   Thumb Code    30  bsp_infrared_send.o(.text)
-    .text                                    0x08002f74   Section        0  bsp_generaltim.o(.text)
-    GENERAL_TIM_GPIO_Config                  0x08002f75   Thumb Code    38  bsp_generaltim.o(.text)
-    GENERAL_TIM_Mode_Config                  0x08002f9b   Thumb Code    96  bsp_generaltim.o(.text)
-    .text                                    0x08003010   Section        0  memcpya.o(.text)
-    .text                                    0x08003034   Section        0  memseta.o(.text)
-    .text                                    0x08003058   Section        0  strstr.o(.text)
-    .text                                    0x0800307c   Section        0  strlen.o(.text)
-    .text                                    0x0800308a   Section        0  uidiv.o(.text)
-    .text                                    0x080030b8   Section       36  init.o(.text)
-    i.__0printf$3                            0x080030dc   Section        0  printf3.o(i.__0printf$3)
-    i.__0sprintf$3                           0x080030fc   Section        0  printf3.o(i.__0sprintf$3)
-    i.__scatterload_copy                     0x08003124   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08003132   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08003134   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._printf_core                           0x08003144   Section        0  printf3.o(i._printf_core)
-    _printf_core                             0x08003145   Thumb Code   436  printf3.o(i._printf_core)
-    i._sputc                                 0x080032fc   Section        0  printf3.o(i._sputc)
-    _sputc                                   0x080032fd   Thumb Code    10  printf3.o(i._sputc)
-    .constdata                               0x08003306   Section       20  bsp_esp8266.o(.constdata)
-    __func__                                 0x08003306   Data          20  bsp_esp8266.o(.constdata)
+    .text                                    0x0800232c   Section        0  bsp_usart1.o(.text)
+    .text                                    0x080023e8   Section        0  bsp_esp8266.o(.text)
+    ESP8266_USART_NVIC_Configuration         0x080023e9   Thumb Code    40  bsp_esp8266.o(.text)
+    ESP8266_USART_Config                     0x08002411   Thumb Code   148  bsp_esp8266.o(.text)
+    ESP8266_GPIO_Config                      0x080024a5   Thumb Code    64  bsp_esp8266.o(.text)
+    .text                                    0x08002bc4   Section        0  common.o(.text)
+    itoa                                     0x08002bc5   Thumb Code    98  common.o(.text)
+    .text                                    0x08002d2c   Section        0  bsp_dht11.o(.text)
+    DHT11_GPIO_Config                        0x08002d2d   Thumb Code    38  bsp_dht11.o(.text)
+    DHT11_Mode_IPU                           0x08002d63   Thumb Code    24  bsp_dht11.o(.text)
+    DHT11_Mode_Out_PP                        0x08002d7b   Thumb Code    30  bsp_dht11.o(.text)
+    DHT11_ReadByte                           0x08002d99   Thumb Code    90  bsp_dht11.o(.text)
+    .text                                    0x08002e90   Section        0  bsp_led.o(.text)
+    .text                                    0x08002ef0   Section        0  bsp_infrared_send.o(.text)
+    Start_signal                             0x08002ef1   Thumb Code    28  bsp_infrared_send.o(.text)
+    Creat_bit_1                              0x08002f0d   Thumb Code    32  bsp_infrared_send.o(.text)
+    Creat_bit_0                              0x08002f2d   Thumb Code    32  bsp_infrared_send.o(.text)
+    End_signal                               0x08002f4d   Thumb Code    30  bsp_infrared_send.o(.text)
+    .text                                    0x08002fd0   Section        0  bsp_generaltim.o(.text)
+    GENERAL_TIM_GPIO_Config                  0x08002fd1   Thumb Code    38  bsp_generaltim.o(.text)
+    GENERAL_TIM_Mode_Config                  0x08002ff7   Thumb Code    96  bsp_generaltim.o(.text)
+    .text                                    0x0800306c   Section        0  memcpya.o(.text)
+    .text                                    0x08003090   Section        0  memseta.o(.text)
+    .text                                    0x080030b4   Section        0  strstr.o(.text)
+    .text                                    0x080030d8   Section        0  strlen.o(.text)
+    .text                                    0x080030e6   Section        0  uidiv.o(.text)
+    .text                                    0x08003114   Section       36  init.o(.text)
+    i.__0printf$3                            0x08003138   Section        0  printf3.o(i.__0printf$3)
+    i.__0sprintf$3                           0x08003158   Section        0  printf3.o(i.__0sprintf$3)
+    i.__scatterload_copy                     0x08003180   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0800318e   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08003190   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._printf_core                           0x080031a0   Section        0  printf3.o(i._printf_core)
+    _printf_core                             0x080031a1   Thumb Code   436  printf3.o(i._printf_core)
+    i._sputc                                 0x08003358   Section        0  printf3.o(i._sputc)
+    _sputc                                   0x08003359   Thumb Code    10  printf3.o(i._sputc)
+    .constdata                               0x08003362   Section       20  bsp_esp8266.o(.constdata)
+    __func__                                 0x08003362   Data          20  bsp_esp8266.o(.constdata)
     .data                                    0x20000000   Section       20  system_stm32f10x.o(.data)
     .data                                    0x20000014   Section       20  stm32f10x_rcc.o(.data)
     APBAHBPrescTable                         0x20000014   Data          16  stm32f10x_rcc.o(.data)
@@ -542,9 +542,9 @@ Image Symbol Table
     .data                                    0x20000046   Section        1  test.o(.data)
     .data                                    0x20000047   Section        1  bsp_esp8266.o(.data)
     .data                                    0x20000048   Section        4  stdout.o(.data)
-    .bss                                     0x2000004c   Section     1500  test.o(.bss)
-    .bss                                     0x20000628   Section     1026  bsp_esp8266.o(.bss)
-    STACK                                    0x20000a30   Section     1024  startup_stm32f10x_hd.o(STACK)
+    .bss                                     0x2000004c   Section     3000  test.o(.bss)
+    .bss                                     0x20000c04   Section     1026  bsp_esp8266.o(.bss)
+    STACK                                    0x20001008   Section     1024  startup_stm32f10x_hd.o(STACK)
 
     Global Symbols
 
@@ -857,60 +857,60 @@ Image Symbol Table
     systick_init                             0x08001e6d   Thumb Code    48  bsp_systick.o(.text)
     delay_us                                 0x08001e9d   Thumb Code    72  bsp_systick.o(.text)
     delay_ms                                 0x08001f2d   Thumb Code    56  bsp_systick.o(.text)
-    ESP8266_StaTcpClient_UnvarnishTest       0x08001f6d   Thumb Code   408  test.o(.text)
-    USARTx_Config                            0x080022d1   Thumb Code   120  bsp_usart1.o(.text)
-    fputc                                    0x08002349   Thumb Code    32  bsp_usart1.o(.text)
-    fgetc                                    0x08002369   Thumb Code    26  bsp_usart1.o(.text)
-    ESP8266_Init                             0x08002489   Thumb Code    32  bsp_esp8266.o(.text)
-    ESP8266_Rst                              0x080024a9   Thumb Code    32  bsp_esp8266.o(.text)
-    ESP8266_Cmd                              0x080024c9   Thumb Code   164  bsp_esp8266.o(.text)
-    ESP8266_AT_Test                          0x0800256d   Thumb Code    58  bsp_esp8266.o(.text)
-    ESP8266_Net_Mode_Choose                  0x080025a7   Thumb Code    68  bsp_esp8266.o(.text)
-    ESP8266_JoinAP                           0x080025eb   Thumb Code    38  bsp_esp8266.o(.text)
-    ESP8266_BuildAP                          0x08002611   Thumb Code    42  bsp_esp8266.o(.text)
-    ESP8266_Enable_MultipleId                0x0800263b   Thumb Code    42  bsp_esp8266.o(.text)
-    ESP8266_Link_Server                      0x08002665   Thumb Code   122  bsp_esp8266.o(.text)
-    ESP8266_StartOrShutServer                0x080026df   Thumb Code   104  bsp_esp8266.o(.text)
-    ESP8266_Get_LinkStatus                   0x08002747   Thumb Code    64  bsp_esp8266.o(.text)
-    ESP8266_Get_IdLinkStatus                 0x08002787   Thumb Code   482  bsp_esp8266.o(.text)
-    ESP8266_Inquire_ApIp                     0x08002969   Thumb Code    80  bsp_esp8266.o(.text)
-    ESP8266_UnvarnishSend                    0x080029b9   Thumb Code    42  bsp_esp8266.o(.text)
-    ESP8266_ExitUnvarnishSend                0x080029e3   Thumb Code    28  bsp_esp8266.o(.text)
-    ESP8266_SendString                       0x080029ff   Thumb Code   104  bsp_esp8266.o(.text)
-    ESP8266_ReceiveString                    0x08002a67   Thumb Code    88  bsp_esp8266.o(.text)
-    USART_printf                             0x08002bcb   Thumb Code   262  common.o(.text)
-    DHT11_Init                               0x08002cf7   Thumb Code    16  bsp_dht11.o(.text)
-    DHT11_Read_TempAndHumidity               0x08002d97   Thumb Code   154  bsp_dht11.o(.text)
-    LED_GPIO_Config                          0x08002e35   Thumb Code    90  bsp_led.o(.text)
-    Send_infrared_code                       0x08002f0f   Thumb Code    98  bsp_infrared_send.o(.text)
-    GENERAL_TIM_Init                         0x08002ffb   Thumb Code    12  bsp_generaltim.o(.text)
-    __aeabi_memcpy                           0x08003011   Thumb Code    36  memcpya.o(.text)
-    __aeabi_memcpy4                          0x08003011   Thumb Code     0  memcpya.o(.text)
-    __aeabi_memcpy8                          0x08003011   Thumb Code     0  memcpya.o(.text)
-    __aeabi_memset                           0x08003035   Thumb Code    14  memseta.o(.text)
-    __aeabi_memset4                          0x08003035   Thumb Code     0  memseta.o(.text)
-    __aeabi_memset8                          0x08003035   Thumb Code     0  memseta.o(.text)
-    __aeabi_memclr                           0x08003043   Thumb Code     4  memseta.o(.text)
-    __aeabi_memclr4                          0x08003043   Thumb Code     0  memseta.o(.text)
-    __aeabi_memclr8                          0x08003043   Thumb Code     0  memseta.o(.text)
-    _memset$wrapper                          0x08003047   Thumb Code    18  memseta.o(.text)
-    strstr                                   0x08003059   Thumb Code    36  strstr.o(.text)
-    strlen                                   0x0800307d   Thumb Code    14  strlen.o(.text)
-    __aeabi_uidiv                            0x0800308b   Thumb Code     0  uidiv.o(.text)
-    __aeabi_uidivmod                         0x0800308b   Thumb Code    44  uidiv.o(.text)
-    __scatterload                            0x080030b9   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x080030b9   Thumb Code     0  init.o(.text)
-    __0printf$3                              0x080030dd   Thumb Code    22  printf3.o(i.__0printf$3)
-    __1printf$3                              0x080030dd   Thumb Code     0  printf3.o(i.__0printf$3)
-    __2printf                                0x080030dd   Thumb Code     0  printf3.o(i.__0printf$3)
-    __0sprintf$3                             0x080030fd   Thumb Code    34  printf3.o(i.__0sprintf$3)
-    __1sprintf$3                             0x080030fd   Thumb Code     0  printf3.o(i.__0sprintf$3)
-    __2sprintf                               0x080030fd   Thumb Code     0  printf3.o(i.__0sprintf$3)
-    __scatterload_copy                       0x08003125   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08003133   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08003135   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    Region$$Table$$Base                      0x0800331c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800333c   Number         0  anon$$obj.o(Region$$Table)
+    ESP8266_StaTcpClient_UnvarnishTest       0x08001f6d   Thumb Code   444  test.o(.text)
+    USARTx_Config                            0x0800232d   Thumb Code   120  bsp_usart1.o(.text)
+    fputc                                    0x080023a5   Thumb Code    32  bsp_usart1.o(.text)
+    fgetc                                    0x080023c5   Thumb Code    26  bsp_usart1.o(.text)
+    ESP8266_Init                             0x080024e5   Thumb Code    32  bsp_esp8266.o(.text)
+    ESP8266_Rst                              0x08002505   Thumb Code    32  bsp_esp8266.o(.text)
+    ESP8266_Cmd                              0x08002525   Thumb Code   164  bsp_esp8266.o(.text)
+    ESP8266_AT_Test                          0x080025c9   Thumb Code    58  bsp_esp8266.o(.text)
+    ESP8266_Net_Mode_Choose                  0x08002603   Thumb Code    68  bsp_esp8266.o(.text)
+    ESP8266_JoinAP                           0x08002647   Thumb Code    38  bsp_esp8266.o(.text)
+    ESP8266_BuildAP                          0x0800266d   Thumb Code    42  bsp_esp8266.o(.text)
+    ESP8266_Enable_MultipleId                0x08002697   Thumb Code    42  bsp_esp8266.o(.text)
+    ESP8266_Link_Server                      0x080026c1   Thumb Code   122  bsp_esp8266.o(.text)
+    ESP8266_StartOrShutServer                0x0800273b   Thumb Code   104  bsp_esp8266.o(.text)
+    ESP8266_Get_LinkStatus                   0x080027a3   Thumb Code    64  bsp_esp8266.o(.text)
+    ESP8266_Get_IdLinkStatus                 0x080027e3   Thumb Code   482  bsp_esp8266.o(.text)
+    ESP8266_Inquire_ApIp                     0x080029c5   Thumb Code    80  bsp_esp8266.o(.text)
+    ESP8266_UnvarnishSend                    0x08002a15   Thumb Code    42  bsp_esp8266.o(.text)
+    ESP8266_ExitUnvarnishSend                0x08002a3f   Thumb Code    28  bsp_esp8266.o(.text)
+    ESP8266_SendString                       0x08002a5b   Thumb Code   104  bsp_esp8266.o(.text)
+    ESP8266_ReceiveString                    0x08002ac3   Thumb Code    88  bsp_esp8266.o(.text)
+    USART_printf                             0x08002c27   Thumb Code   262  common.o(.text)
+    DHT11_Init                               0x08002d53   Thumb Code    16  bsp_dht11.o(.text)
+    DHT11_Read_TempAndHumidity               0x08002df3   Thumb Code   154  bsp_dht11.o(.text)
+    LED_GPIO_Config                          0x08002e91   Thumb Code    90  bsp_led.o(.text)
+    Send_infrared_code                       0x08002f6b   Thumb Code    98  bsp_infrared_send.o(.text)
+    GENERAL_TIM_Init                         0x08003057   Thumb Code    12  bsp_generaltim.o(.text)
+    __aeabi_memcpy                           0x0800306d   Thumb Code    36  memcpya.o(.text)
+    __aeabi_memcpy4                          0x0800306d   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memcpy8                          0x0800306d   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memset                           0x08003091   Thumb Code    14  memseta.o(.text)
+    __aeabi_memset4                          0x08003091   Thumb Code     0  memseta.o(.text)
+    __aeabi_memset8                          0x08003091   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr                           0x0800309f   Thumb Code     4  memseta.o(.text)
+    __aeabi_memclr4                          0x0800309f   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr8                          0x0800309f   Thumb Code     0  memseta.o(.text)
+    _memset$wrapper                          0x080030a3   Thumb Code    18  memseta.o(.text)
+    strstr                                   0x080030b5   Thumb Code    36  strstr.o(.text)
+    strlen                                   0x080030d9   Thumb Code    14  strlen.o(.text)
+    __aeabi_uidiv                            0x080030e7   Thumb Code     0  uidiv.o(.text)
+    __aeabi_uidivmod                         0x080030e7   Thumb Code    44  uidiv.o(.text)
+    __scatterload                            0x08003115   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x08003115   Thumb Code     0  init.o(.text)
+    __0printf$3                              0x08003139   Thumb Code    22  printf3.o(i.__0printf$3)
+    __1printf$3                              0x08003139   Thumb Code     0  printf3.o(i.__0printf$3)
+    __2printf                                0x08003139   Thumb Code     0  printf3.o(i.__0printf$3)
+    __0sprintf$3                             0x08003159   Thumb Code    34  printf3.o(i.__0sprintf$3)
+    __1sprintf$3                             0x08003159   Thumb Code     0  printf3.o(i.__0sprintf$3)
+    __2sprintf                               0x08003159   Thumb Code     0  printf3.o(i.__0sprintf$3)
+    __scatterload_copy                       0x08003181   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0800318f   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08003191   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    Region$$Table$$Base                      0x08003378   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08003398   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_stm32f10x.o(.data)
     AHBPrescTable                            0x20000004   Data          16  system_stm32f10x.o(.data)
     Code_Tem_26_off                          0x20000028   Data           6  main.o(.data)
@@ -922,8 +922,9 @@ Image Symbol Table
     order                                    0x20000047   Data           1  bsp_esp8266.o(.data)
     __stdout                                 0x20000048   Data           4  stdout.o(.data)
     cStr                                     0x2000004c   Data        1500  test.o(.bss)
-    strEsp8266_Fram_Record                   0x20000628   Data        1026  bsp_esp8266.o(.bss)
-    __initial_sp                             0x20000e30   Data           0  startup_stm32f10x_hd.o(STACK)
+    dStr                                     0x20000628   Data        1500  test.o(.bss)
+    strEsp8266_Fram_Record                   0x20000c04   Data        1026  bsp_esp8266.o(.bss)
+    __initial_sp                             0x20001408   Data           0  startup_stm32f10x_hd.o(STACK)
 
 
 
@@ -933,9 +934,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000131
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00003388, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000033e4, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x0000333c, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00003398, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -960,35 +961,35 @@ Memory Map of the image
     0x08001d48   0x00000050   Code   RO          403    .text               main.o
     0x08001d98   0x000000d4   Code   RO          455    .text               stm32f10x_it.o
     0x08001e6c   0x00000100   Code   RO          474    .text               bsp_systick.o
-    0x08001f6c   0x00000364   Code   RO          491    .text               test.o
-    0x080022d0   0x000000bc   Code   RO          511    .text               bsp_usart1.o
-    0x0800238c   0x000007dc   Code   RO          523    .text               bsp_esp8266.o
-    0x08002b68   0x00000168   Code   RO          543    .text               common.o
-    0x08002cd0   0x00000164   Code   RO          558    .text               bsp_dht11.o
-    0x08002e34   0x00000060   Code   RO          573    .text               bsp_led.o
-    0x08002e94   0x000000e0   Code   RO          585    .text               bsp_infrared_send.o
-    0x08002f74   0x0000009c   Code   RO          597    .text               bsp_generaltim.o
-    0x08003010   0x00000024   Code   RO          612    .text               mc_w.l(memcpya.o)
-    0x08003034   0x00000024   Code   RO          614    .text               mc_w.l(memseta.o)
-    0x08003058   0x00000024   Code   RO          616    .text               mc_w.l(strstr.o)
-    0x0800307c   0x0000000e   Code   RO          618    .text               mc_w.l(strlen.o)
-    0x0800308a   0x0000002c   Code   RO          898    .text               mc_w.l(uidiv.o)
-    0x080030b6   0x00000002   PAD
-    0x080030b8   0x00000024   Code   RO          913    .text               mc_w.l(init.o)
-    0x080030dc   0x00000020   Code   RO          711    i.__0printf$3       mc_w.l(printf3.o)
-    0x080030fc   0x00000028   Code   RO          713    i.__0sprintf$3      mc_w.l(printf3.o)
-    0x08003124   0x0000000e   Code   RO          925    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08003132   0x00000002   Code   RO          926    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08003134   0x0000000e   Code   RO          927    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x08003142   0x00000002   PAD
-    0x08003144   0x000001b8   Code   RO          718    i._printf_core      mc_w.l(printf3.o)
-    0x080032fc   0x0000000a   Code   RO          720    i._sputc            mc_w.l(printf3.o)
-    0x08003306   0x00000014   Data   RO          525    .constdata          bsp_esp8266.o
-    0x0800331a   0x00000002   PAD
-    0x0800331c   0x00000020   Data   RO          923    Region$$Table       anon$$obj.o
+    0x08001f6c   0x000003c0   Code   RO          491    .text               test.o
+    0x0800232c   0x000000bc   Code   RO          511    .text               bsp_usart1.o
+    0x080023e8   0x000007dc   Code   RO          523    .text               bsp_esp8266.o
+    0x08002bc4   0x00000168   Code   RO          543    .text               common.o
+    0x08002d2c   0x00000164   Code   RO          558    .text               bsp_dht11.o
+    0x08002e90   0x00000060   Code   RO          573    .text               bsp_led.o
+    0x08002ef0   0x000000e0   Code   RO          585    .text               bsp_infrared_send.o
+    0x08002fd0   0x0000009c   Code   RO          597    .text               bsp_generaltim.o
+    0x0800306c   0x00000024   Code   RO          612    .text               mc_w.l(memcpya.o)
+    0x08003090   0x00000024   Code   RO          614    .text               mc_w.l(memseta.o)
+    0x080030b4   0x00000024   Code   RO          616    .text               mc_w.l(strstr.o)
+    0x080030d8   0x0000000e   Code   RO          618    .text               mc_w.l(strlen.o)
+    0x080030e6   0x0000002c   Code   RO          898    .text               mc_w.l(uidiv.o)
+    0x08003112   0x00000002   PAD
+    0x08003114   0x00000024   Code   RO          913    .text               mc_w.l(init.o)
+    0x08003138   0x00000020   Code   RO          711    i.__0printf$3       mc_w.l(printf3.o)
+    0x08003158   0x00000028   Code   RO          713    i.__0sprintf$3      mc_w.l(printf3.o)
+    0x08003180   0x0000000e   Code   RO          925    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800318e   0x00000002   Code   RO          926    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08003190   0x0000000e   Code   RO          927    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0800319e   0x00000002   PAD
+    0x080031a0   0x000001b8   Code   RO          718    i._printf_core      mc_w.l(printf3.o)
+    0x08003358   0x0000000a   Code   RO          720    i._sputc            mc_w.l(printf3.o)
+    0x08003362   0x00000014   Data   RO          525    .constdata          bsp_esp8266.o
+    0x08003376   0x00000002   PAD
+    0x08003378   0x00000020   Data   RO          923    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000e30, Max: 0x00010000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00001408, Max: 0x00010000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1000,10 +1001,10 @@ Memory Map of the image
     0x20000046   0x00000001   Data   RW          493    .data               test.o
     0x20000047   0x00000001   Data   RW          526    .data               bsp_esp8266.o
     0x20000048   0x00000004   Data   RW          897    .data               mc_w.l(stdout.o)
-    0x2000004c   0x000005dc   Zero   RW          492    .bss                test.o
-    0x20000628   0x00000402   Zero   RW          524    .bss                bsp_esp8266.o
-    0x20000a2a   0x00000006   PAD
-    0x20000a30   0x00000400   Zero   RW            1    STACK               startup_stm32f10x_hd.o
+    0x2000004c   0x00000bb8   Zero   RW          492    .bss                test.o
+    0x20000c04   0x00000402   Zero   RW          524    .bss                bsp_esp8266.o
+    0x20001006   0x00000002   PAD
+    0x20001008   0x00000400   Zero   RW            1    STACK               startup_stm32f10x_hd.o
 
 
 ==============================================================================
@@ -1013,30 +1014,30 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       356          4          0          0          0       2696   bsp_dht11.o
-      2012        522         20          1       1026       8355   bsp_esp8266.o
-       156         10          0          0          0        895   bsp_generaltim.o
-       224          4          0          0          0       1533   bsp_infrared_send.o
-        96          6          0          0          0        518   bsp_led.o
-       256          8          0          4          0       1305   bsp_systick.o
-       188         10          0          0          0        980   bsp_usart1.o
-       360          0          0          0          0       2303   common.o
+       356          4          0          0          0       2720   bsp_dht11.o
+      2012        522         20          1       1026       8379   bsp_esp8266.o
+       156         10          0          0          0        903   bsp_generaltim.o
+       224          4          0          0          0       1549   bsp_infrared_send.o
+        96          6          0          0          0        526   bsp_led.o
+       256          8          0          4          0       1321   bsp_systick.o
+       188         10          0          0          0        988   bsp_usart1.o
+       360          0          0          0          0       2319   common.o
          0          0          0          0          0       4520   core_cm3.o
-        80         42          0         25          0       3658   main.o
-       220         22          0          0          0       1801   misc.o
-        36          8        304          0       1024        856   startup_stm32f10x_hd.o
-       860         38          0          0          0       5641   stm32f10x_gpio.o
-       212         36          0          0          0       1484   stm32f10x_it.o
-       932         36          0         20          0       8808   stm32f10x_rcc.o
-      3610         88          0          0          0      22132   stm32f10x_tim.o
-      1032         22          0          0          0       8372   stm32f10x_usart.o
-       480         38          0         20          0     250215   system_stm32f10x.o
-       868        460          0          1       1500       2015   test.o
+        80         42          0         25          0       3690   main.o
+       220         22          0          0          0       1817   misc.o
+        36          8        304          0       1024        864   startup_stm32f10x_hd.o
+       860         38          0          0          0       5657   stm32f10x_gpio.o
+       212         36          0          0          0       1492   stm32f10x_it.o
+       932         36          0         20          0       8832   stm32f10x_rcc.o
+      3610         88          0          0          0      22148   stm32f10x_tim.o
+      1032         22          0          0          0       8388   stm32f10x_usart.o
+       480         38          0         20          0     250287   system_stm32f10x.o
+       960        516          0          1       3000       2088   test.o
 
     ----------------------------------------------------------------------
-     11980       1354        358         72       3556     328087   Object Totals
+     12072       1410        358         72       5052     328488   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         2          0          2          1          6          0   (incl. Padding)
+         2          0          2          1          2          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1080,15 +1081,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     12758       1390        358         76       3556     327435   Grand Totals
-     12758       1390        358         76       3556     327435   ELF Image Totals
-     12758       1390        358         76          0          0   ROM Totals
+     12850       1446        358         76       5052     327836   Grand Totals
+     12850       1446        358         76       5052     327836   ELF Image Totals
+     12850       1446        358         76          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                13116 (  12.81kB)
-    Total RW  Size (RW Data + ZI Data)              3632 (   3.55kB)
-    Total ROM Size (Code + RO Data + RW Data)      13192 (  12.88kB)
+    Total RO  Size (Code + RO Data)                13208 (  12.90kB)
+    Total RW  Size (RW Data + ZI Data)              5128 (   5.01kB)
+    Total ROM Size (Code + RO Data + RW Data)      13284 (  12.97kB)
 
 ==============================================================================
 
