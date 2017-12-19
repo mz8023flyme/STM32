@@ -51,7 +51,7 @@ int main ( void )
         DHT11_Init ();
         //初始化定时器
         GENERAL_TIM_Init();
-        printf ( "\r\n野火 WF-ESP8266 WiFi模块测试例程\r\n" );                          //打印测试例程提示信息
+        printf ( "\r\n野火 WF-ESP8266 WiFi模块测试\r\n" );                          //打印测试例程提示信息
 
 
         ESP8266_StaTcpClient_UnvarnishTest ();

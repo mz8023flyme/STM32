@@ -40,9 +40,9 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
         printf ( "\r\n正在配置 ESP8266 ......\r\n" );
 
         macESP8266_CH_ENABLE();  //使能模块的配置
-
+        printf("[%s][%d]", __func__, __LINE__);
         ESP8266_AT_Test ();     //测试AT指令
-
+        printf("[%s][%d]", __func__, __LINE__);
         ESP8266_Net_Mode_Choose ( STA );  //选择工作模式
         //连接WiFi     WiFi名和密码
         while ( ! ESP8266_JoinAP ( macUser_ESP8266_ApSsid, macUser_ESP8266_ApPwd ) ); 

@@ -8,7 +8,7 @@
 
 
 /********************************** 用户需要设置的参数**********************************/
-#define      macUser_ESP8266_ApSsid              "FlyingEmbeddedStudio"    //要连接的热点的名称
+#define      macUser_ESP8266_ApSsid              "s008-flying"    //要连接的热点的名称
 #define      macUser_ESP8266_ApPwd               "dianxin132"              //要连接的热点的密钥
 
 #define      macUser_ESP8266_TcpServer_IP                 "121.42.180.30"      //要连接的服务器的 IP

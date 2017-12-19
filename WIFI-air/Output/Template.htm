@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\..\Output\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\..\Output\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Wed Sep 20 19:09:31 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050169: Last Updated: Tue Nov 14 21:23:44 2017
 <BR><P>
 <H3>Maximum Stack Usage =        412 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -878,7 +878,7 @@ Global Symbols
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_StaTcpClient_UnvarnishTest
 </UL>
 
-<P><STRONG><a name="[70]"></a>ESP8266_StaTcpClient_UnvarnishTest</STRONG> (Thumb, 444 bytes, Stack size 64 bytes, test.o(.text))
+<P><STRONG><a name="[70]"></a>ESP8266_StaTcpClient_UnvarnishTest</STRONG> (Thumb, 464 bytes, Stack size 64 bytes, test.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 412<LI>Call Chain = ESP8266_StaTcpClient_UnvarnishTest &rArr; ESP8266_Link_Server &rArr; ESP8266_Cmd &rArr; USART_printf &rArr; itoa
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
@@ -927,11 +927,12 @@ Global Symbols
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
 </UL>
 
-<P><STRONG><a name="[6b]"></a>ESP8266_Init</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, bsp_esp8266.o(.text))
+<P><STRONG><a name="[6b]"></a>ESP8266_Init</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, bsp_esp8266.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = ESP8266_Init &rArr; ESP8266_USART_Config &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_GPIO_Config
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_USART_Config
 </UL>
@@ -971,7 +972,7 @@ Global Symbols
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_StaTcpClient_UnvarnishTest
 </UL>
 
-<P><STRONG><a name="[77]"></a>ESP8266_AT_Test</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, bsp_esp8266.o(.text))
+<P><STRONG><a name="[77]"></a>ESP8266_AT_Test</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, bsp_esp8266.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 108<LI>Call Chain = ESP8266_AT_Test &rArr; ESP8266_Cmd &rArr; USART_printf &rArr; itoa
 </UL>
 <BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
@@ -1038,7 +1039,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_StaTcpClient_UnvarnishTest
 </UL>
 
-<P><STRONG><a name="[99]"></a>ESP8266_Get_IdLinkStatus</STRONG> (Thumb, 482 bytes, Stack size 8 bytes, bsp_esp8266.o(.text), UNUSED)
+<P><STRONG><a name="[99]"></a>ESP8266_Get_IdLinkStatus</STRONG> (Thumb, 500 bytes, Stack size 8 bytes, bsp_esp8266.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strstr
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_Cmd
 </UL>
@@ -1217,6 +1218,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_Link_Server
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_Cmd
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_StaTcpClient_UnvarnishTest
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_Init
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 

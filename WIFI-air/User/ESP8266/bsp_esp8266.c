@@ -27,7 +27,7 @@ void ESP8266_Init ( void )
         ESP8266_GPIO_Config (); 
 
         ESP8266_USART_Config (); 
-
+        printf("ESP8266_init");
 
         macESP8266_RST_HIGH_LEVEL();
 
@@ -210,28 +210,28 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
  * 返回  : 无
  * 调用  ：被外部调用
  */
-//void ESP8266_AT_Test ( void )
-//{
-//      macESP8266_RST_HIGH_LEVEL();
-//      
-//      delay_ms ( 1000 ); 
-//      
-//      while ( ! ESP8266_Cmd ( "AT", "OK", NULL, 500 ) ) ESP8266_Rst (); 
-
-//}
 void ESP8266_AT_Test ( void )
-        {
-        char count=0;
+{
+      macESP8266_RST_HIGH_LEVEL();
+      
+      delay_ms ( 1000 ); 
+      
+      while ( ! ESP8266_Cmd ( "AT", "OK", NULL, 500 ) ) ESP8266_Rst (); 
 
-        macESP8266_RST_HIGH_LEVEL(); 
-        delay_ms ( 1000 );
-        while ( count < 10 )
-        {
-                if( ESP8266_Cmd ( "AT", "OK", NULL, 500 ) ) return;
-                ESP8266_Rst();
-                ++ count;
-        }
 }
+//void ESP8266_AT_Test ( void )
+//        {
+//        char count=0;
+
+//        macESP8266_RST_HIGH_LEVEL(); 
+//        delay_ms ( 1000 );
+//        while ( count < 10 )
+//        {
+//                if( ESP8266_Cmd ( "AT", "OK", NULL, 500 ) ) return;
+//                ESP8266_Rst();
+//                ++ count;
+//        }
+//}
 
 
 /*

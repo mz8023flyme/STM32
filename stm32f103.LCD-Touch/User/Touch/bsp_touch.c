@@ -658,33 +658,33 @@ uint8_t LCD_Get_TouchedPoint ( strType_LCD_Coordinate * pDisplayCoordinate, strT
   */
 void LCD_TouchDown(strType_LCD_Coordinate * touch)
 {
-	//若为负值表示之前已处理过
-//	if(touch->pre_x == -1 && touch->pre_x == -1)
-//	return;
+        //若为负值表示之前已处理过
+        //      if(touch->pre_x == -1 && touch->pre_x == -1)
+        //      return;
 
-	/***在此处编写自己的触摸按下处理应用***/
-	
-	LCD_SetColors(RED,WHITE);
-	LCD_Clear(30,101,58,48);
-	LCD_DispString_CH(43,117,"红灯");
-	
-	LCD_SetColors(GREEN,WHITE);
-	LCD_Clear(91,101,58,48);
-	LCD_DispString_CH(108,117,"绿灯");
-	
-	LCD_SetColors(BLUE,WHITE);
-	LCD_Clear(152,101,58,48);
-	LCD_DispString_CH(169,117,"蓝灯");
-	LCD_SetColors(WHITE,MAGENTA);
-	LCD_Clear(151,151,60,50);
-	LCD_DispString_CH(159,168,"流水灯");
-	Water_Lape();
+        /***在此处编写自己的触摸按下处理应用***/
 
-	LCD_SetColors(MAGENTA,WHITE);
-	LCD_Clear(152,152,58,48);
-	LCD_DispString_CH(159,168,"流水灯");
+        LCD_SetColors(RED,WHITE);
+        LCD_Clear(30,101,58,48);
+        LCD_DispString_CH(43,117,"红灯");
 
-	/***在上面编写自己的触摸按下处理应用***/	
+        LCD_SetColors(GREEN,WHITE);
+        LCD_Clear(91,101,58,48);
+        LCD_DispString_CH(108,117,"绿灯");
+
+        LCD_SetColors(BLUE,WHITE);
+        LCD_Clear(152,101,58,48);
+        LCD_DispString_CH(169,117,"蓝灯");
+        LCD_SetColors(WHITE,MAGENTA);
+        LCD_Clear(151,151,60,50);
+        LCD_DispString_CH(159,168,"流水灯");
+        Water_Lape();
+
+        LCD_SetColors(MAGENTA,WHITE);
+        LCD_Clear(152,152,58,48);
+        LCD_DispString_CH(159,168,"流水灯");
+
+        /***在上面编写自己的触摸按下处理应用***/	
 }
 
 /**
@@ -706,9 +706,9 @@ void LCD_TouchUp(strType_LCD_Coordinate * touch)
 
 /**
 	* @brief   检测到触摸中断时调用的处理函数,通过它调用tp_down 和tp_up汇报触摸点
-	*	@note 	 本函数需要在while循环里被调用，也可使用定时器定时调用
-	*			例如，可以每隔5ms调用一次，消抖阈值宏DURIATION_TIME可设置为2，这样每秒最多可以检测100个点。
-	*						可在XPT2046_TouchDown及XPT2046_TouchUp函数中编写自己的触摸应用
+*	@note 	 本函数需要在while循环里被调用，也可使用定时器定时调用
+*			例如，可以每隔5ms调用一次，消抖阈值宏DURIATION_TIME可设置为2，这样每秒最多可以检测100个点。
+*						可在XPT2046_TouchDown及XPT2046_TouchUp函数中编写自己的触摸应用
 	* @param   none
 	* @retval  none
 	*/

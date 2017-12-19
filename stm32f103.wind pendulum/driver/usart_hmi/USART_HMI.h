@@ -11,10 +11,10 @@
 
 typedef struct{
         /* 控件名称 */
-	const char *Control_Name;
-		/* 控件的属性 */
+        const char *Control_Name;
+                /* 控件的属性 */
         const char *Control_Property;
-		/* 控件的属性参数 */
+                /* 控件的属性参数 */
         char *Control_Param;
 }HMI_Control_Typtdef;
 
