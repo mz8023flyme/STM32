@@ -159,7 +159,7 @@ sFONT *LCD_GetFont(void);
 void LCD_DrawChar_Ex(uint16_t usX, uint16_t usY, uint16_t Font_width, uint16_t Font_Height,uint8_t *c,uint16_t DrawModel);
 void LCD_DisplayStringEx(uint16_t x,  uint16_t y,uint16_t Font_width,uint16_t Font_Height,	uint8_t *ptr,uint16_t DrawModel) ;
 void LCD_zoomChar(uint16_t in_width,uint16_t in_heig,uint16_t out_width,	
-			uint16_t out_heig,uint8_t *in_ptr,uint8_t *out_ptr, uint8_t en_cn);
+ uint16_t out_heig,uint8_t *in_ptr,uint8_t *out_ptr, uint8_t en_cn);
 void Delay ( __IO uint32_t nCount );
 void LCD_DrawLine ( uint16_t usX1, uint16_t usY1, uint16_t usX2, uint16_t usY2 );
 void LCD_DrawRectangle ( uint16_t usX_Start, uint16_t usY_Start, uint16_t usWidth, uint16_t usHeight, uint8_t ucFilled );
