@@ -239,7 +239,7 @@ void i2c_send_byte(I2C_GpioDef* I2Cx, u8 data)
         for(t = 0; t < 8; t++)
         {
                 /* 写入数据的最高位 */
-                *(I2Cx->SDA) = (data& 0x80) >> 7;
+                *(I2Cx->SDA) = (data & 0x80) >> 7;
 
                 /* 发送完了最高位, 数据左移一个, 次高位变成了新的最高位 */
                 data <<= 1;

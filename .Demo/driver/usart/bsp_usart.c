@@ -58,6 +58,31 @@ void usart_init(void)
         USART_Cmd(USART1, ENABLE);
 }
 
+/*****************  发送一个字符 **********************/
+void Usart_SendByte( USART_TypeDef * pUSARTx, uint8_t ch)
+{
+        /* 发送一个字节数据到USART */
+        USART_SendData(USART1,ch);
+                
+        /* 等待发送数据寄存器为空 */
+        while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);	
+}
+
+/*****************  发送字符串 **********************/
+void Usart_SendString( USART_TypeDef * pUSARTx, char *str)
+{
+        unsigned int k=0;
+        do 
+        {
+        Usart_SendByte( USART1, *(str + k) );
+        k++;
+        } while(*(str + k)!='\0');
+
+        /* 等待发送完成 */
+        while(USART_GetFlagStatus(USART1,USART_FLAG_TC)==RESET)
+        {}
+}
+
 /**
  * @brief 串口中断服务函数, 每有接收一个字节, 申请一次中断, 中断函数里面接收, 直到接收到换行停止接收
  */
