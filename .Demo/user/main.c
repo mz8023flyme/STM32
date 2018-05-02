@@ -11,7 +11,7 @@ int main(void)
         
         while(1)
         {
-                printf("[%s][%d]", __func__, __LINE__);
+                printf("[%s][%d]\r\n", __func__, __LINE__);
                 delay_ms(1000);
         }
 }

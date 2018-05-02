@@ -705,13 +705,13 @@ void LCD_TouchUp(strType_LCD_Coordinate * touch)
 }
 
 /**
-	* @brief   检测到触摸中断时调用的处理函数,通过它调用tp_down 和tp_up汇报触摸点
-*	@note 	 本函数需要在while循环里被调用，也可使用定时器定时调用
-*			例如，可以每隔5ms调用一次，消抖阈值宏DURIATION_TIME可设置为2，这样每秒最多可以检测100个点。
-*						可在XPT2046_TouchDown及XPT2046_TouchUp函数中编写自己的触摸应用
-	* @param   none
-	* @retval  none
-	*/
+  * @brief   检测到触摸中断时调用的处理函数,通过它调用tp_down 和tp_up汇报触摸点
+  * @note       本函数需要在while循环里被调用，也可使用定时器定时调用
+  *     例如，可以每隔5ms调用一次，消抖阈值宏DURIATION_TIME可设置为2，这样每秒最多可以检测100个点。
+  *     可在XPT2046_TouchDown及XPT2046_TouchUp函数中编写自己的触摸应用
+  * @param   none
+  * @retval  none
+  */
 void LCD_TouchEvenHandler(void )
 {
           static strType_LCD_Coordinate cinfo={-1,-1,-1,-1};

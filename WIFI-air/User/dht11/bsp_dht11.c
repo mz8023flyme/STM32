@@ -141,7 +141,7 @@ static uint8_t DHT11_ReadByte ( void )
  * 8bit 湿度整数 + 8bit 湿度小数 + 8bit 温度整数 + 8bit 温度小数 + 8bit 校验和 
  */
 uint8_t DHT11_Read_TempAndHumidity(DHT11_Data_TypeDef *DHT11_Data)
-{  
+{
         /*输出模式*/
         DHT11_Mode_Out_PP();
         /*主机拉低*/

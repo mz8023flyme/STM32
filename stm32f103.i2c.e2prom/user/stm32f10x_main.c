@@ -23,7 +23,7 @@ int main(void)
         usart_init();
         at24c02_init();
         led_init();
-	printf("\r\niic  test\r\n");
+		printf("\r\niic  test\r\n");
         while (1)
         {      
 
