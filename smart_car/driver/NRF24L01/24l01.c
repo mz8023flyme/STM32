@@ -179,7 +179,7 @@ void RX_Mode(void)
 //CE为高大于10us,则启动发送.     
 void TX_Mode(void)
 {       
-        NRF24L01_CE=0;  
+        NRF24L01_CE=0;  40
         NRF24L01_Write_Buf(WRITE +TX_ADDR,(u8*)TX_ADDRESS,TX_ADR_WIDTH);//写TX节点地址 
         NRF24L01_Write_Buf(WRITE +RX_ADDR_P0,(u8*)RX_ADDRESS,RX_ADR_WIDTH); //设置TX节点地址,主要为了使能ACK	  
                                  
