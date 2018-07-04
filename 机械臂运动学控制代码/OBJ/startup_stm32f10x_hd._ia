@@ -1,0 +1,4 @@
+--cpu Cortex-M3 -g --apcs=interwork 
+-I C:\keil_stm32\ARM\RV31\INC 
+-I C:\keil_stm32\ARM\CMSIS\Include 
+--list ".\startup_stm32f10x_hd.lst" --xref -o "..\OBJ\startup_stm32f10x_hd.o" --depend "..\OBJ\startup_stm32f10x_hd.d" "..\MiniBalance_COER\startup_stm32f10x_hd.s"
