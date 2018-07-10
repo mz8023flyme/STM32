@@ -37,4 +37,11 @@
 .\objects\main.o: ..\User\rtc\bsp_calendar.h
 .\objects\main.o: ..\User\rtc\bsp_date.h
 .\objects\main.o: ..\User\SPI\bsp_spi.h
-.\objects\main.o: ..\User\Touch\bsp_touch.h
+.\objects\main.o: ..\User\BMP\bsp_bmp.h
+.\objects\main.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\math.h
+.\objects\main.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: ..\User\sdcard\bsp_sdfs_app.h
+.\objects\main.o: ..\User\ff9\diskio.h
+.\objects\main.o: ..\User\ff9\integer.h
+.\objects\main.o: ..\User\sdcard\bsp_sdio_sdcard.h

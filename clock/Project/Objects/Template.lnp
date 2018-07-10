@@ -35,6 +35,12 @@
 ".\objects\bsp_calendar.o"
 ".\objects\bsp_date.o"
 ".\objects\bsp_rtc.o"
+".\objects\bsp_bmp.o"
+".\objects\bsp_sdfs_app.o"
+".\objects\bsp_sdio_sdcard.o"
+".\objects\diskio.o"
+".\objects\ff.o"
+".\objects\cc936.o"
 --library_type=microlib --strict --scatter ".\Objects\Template.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

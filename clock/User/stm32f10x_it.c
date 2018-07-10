@@ -25,10 +25,19 @@
 #include "stm32f10x_it.h"
 #include "bsp_usart.h"
 #include "bsp_rtc.h"
+#include "bsp_sdio_sdcard.h"
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
 extern uint32_t TimeDisplay;
+extern u8 time_flag;
+
+void SDIO_IRQHandler(void) 
+{
+  /* Process All SDIO Interrupt Sources */
+  SD_ProcessIRQSrc();
+}
+
 void RTC_IRQHandler(void)
 {
         if (RTC_GetITStatus(RTC_IT_SEC) != RESET)
@@ -38,7 +47,7 @@ void RTC_IRQHandler(void)
 
         /* Enable time update */
         TimeDisplay = 1;
-
+        time_flag=1;
         /* Wait until last write operation on RTC registers has finished */
         RTC_WaitForLastTask();
         }

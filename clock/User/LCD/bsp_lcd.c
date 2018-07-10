@@ -3,6 +3,8 @@
 #include "fonts.h"
 #include <stdio.h>  
 #include <string.h>
+#include "ascii.h" 
+#include <math.h>
 
 extern uint8_t const *WEEK_STR[] ;
 extern uint8_t const *zodiac_sign[] ;
@@ -892,6 +894,45 @@ void LCD_SetPointPixel ( uint16_t usX, uint16_t usY )
         }
 
 }
+/**
+ * @brief  读取ILI9341 GRAN 的一个像素数据
+ * @param  无
+ * @retval 像素数据
+ */
+static uint16_t LCD_Read_PixelData ( void )	
+{       
+        uint16_t usR=0, usG=0, usB=0 ;
+
+
+        LCD_Write_Cmd ( 0x2E );   /* 读数据 */
+
+        usR = LCD_Read_Data (); 	/*FIRST READ OUT DUMMY DATA*/
+
+        usR = LCD_Read_Data ();  	/*READ OUT RED DATA  */
+        usB = LCD_Read_Data ();  	/*READ OUT BLUE DATA*/
+        usG = LCD_Read_Data ();  	/*READ OUT GREEN DATA*/	
+
+        return ( ( ( usR >> 11 ) << 11 ) | ( ( usG >> 10 ) << 5 ) | ( usB >> 11 ) );
+
+}
+/**
+ * @brief  获取 ILI9341 显示器上某一个坐标点的像素数据
+ * @param  usX ：在特定扫描方向下该点的X坐标
+ * @param  usY ：在特定扫描方向下该点的Y坐标
+ * @retval 像素数据
+ */
+uint16_t LCD_GetPointPixel ( uint16_t usX, uint16_t usY )
+{ 
+        uint16_t usPixelData;
+        LCD_SetCursor ( usX, usY );
+
+        usPixelData = LCD_Read_PixelData ();
+
+        return usPixelData;
+
+}
+
+
 
 
 
@@ -1175,6 +1216,26 @@ void LCD_DrawLine ( uint16_t usX1, uint16_t usY1, uint16_t usX2, uint16_t usY2 )
 
 
 }   
+/**
+ * @brief  在 ILI9341 显示器上使用 Bresenham 算法画线段 
+ * @param  usX1 ：在特定扫描方向下线段的一个端点X坐标
+ * @param  usY1 ：在特定扫描方向下线段的一个端点Y坐标
+ * @param  usL ：在特定扫描方向下线段的长度
+ * @param  usW ：在特定扫描方向下线段的角度
+ * @note 可使用LCD_SetBackColor、LCD_SetTextColor、LCD_SetColors函数设置颜色
+ * @retval 无
+ */
+void LCD_DrawLine_Polar(uint16_t X1, uint16_t Y1, uint16_t L, uint16_t angle )
+{
+        u16 X2,Y2;  //另一个点的坐标
+        float radian;  //弧度
+        radian = angle*Pi/180;
+        X2=(u16)(X1+L*cos(radian));
+        Y2=(u16)(Y1+L*sin(radian));
+        LCD_DrawLine(X1,Y1,X2,Y2);
+}
+
+
 
 /**
   * @brief  设置LCD的前景(字体)颜色,RGB565
@@ -1224,11 +1285,107 @@ void LCD_Time_Show(struct rtc_time *tm)
 {
         char dataStr [ 1500 ] = { 0 };
         char TimeStr [ 1500 ] = { 0 };
-        
+        u16  anagle,temp;
+        int sec_anagle,hour_anagle,min_anagle;
         sprintf(dataStr,"%d年 (%s年) %d月%d日 星期%s",tm->tm_year,zodiac_sign[(tm->tm_year-3)%12],
         tm->tm_mon, tm->tm_mday,WEEK_STR[tm->tm_wday]);
         sprintf(TimeStr,"%0.2d:%0.2d:%0.2d", tm->tm_hour,tm->tm_min, tm->tm_sec);
 
-        LCD_DispString_EN_CH(8,300,dataStr);
-        LCD_DispString_EN_CH(88,280,TimeStr);
+        LCD_SetTextColor(RED);
+        LCD_DispString_EN_CH(88,240,TimeStr);
+        LCD_DispString_EN_CH(8,270,dataStr);
+        
+        anagle = tm->tm_sec*6;
+        
+        if(anagle<90)
+        {
+                sec_anagle=anagle+360-90;
+        }
+        else
+        {
+                sec_anagle=anagle-90;
+        }
+        
+        //檫除上一次的痕迹
+        LCD_SetTextColor(WHITE);
+        if(sec_anagle==0)
+        {
+                temp=354;
+                LCD_DrawLine_Polar(Xlabel, Ylabel, Sec_length, temp);
+        }
+        else
+        {
+                LCD_DrawLine_Polar(Xlabel, Ylabel, Sec_length, sec_anagle-6);
+        }
+//        LCD_DrawLine_Polar(Xlabel, Ylabel, Sec_length, sec_anagle);
+//        LCD_DrawLine_Polar(Xlabel, Ylabel, Sec_length, sec_anagle+6);
+        //画新的指针
+        LCD_SetTextColor(RED);
+        LCD_DrawLine_Polar(Xlabel, Ylabel, Sec_length, sec_anagle);
+        
+        //分针部分
+        anagle = tm->tm_min*6;
+                
+        if(anagle<90)
+        {
+                min_anagle=anagle+360-90;
+        }
+        else
+        {
+                min_anagle=anagle-90;
+        }
+        
+        if(tm->tm_sec==0)
+        {
+                //檫除上一次的痕迹
+                LCD_SetTextColor(WHITE);
+                if(min_anagle==0)
+                {
+                        temp=354;
+                        LCD_DrawLine_Polar(Xlabel, Ylabel, Min_length, temp);
+                }
+                else
+                {
+                        LCD_DrawLine_Polar(Xlabel, Ylabel, Min_length, min_anagle-6);
+                }
+//                LCD_DrawLine_Polar(Xlabel, Ylabel, Min_length, min_anagle);
+//                LCD_DrawLine_Polar(Xlabel, Ylabel, Min_length, min_anagle+6);
+        }
+                //画新的指针
+                LCD_SetTextColor(BLUE);
+                LCD_DrawLine_Polar(Xlabel, Ylabel, Min_length, min_anagle);
+        
+                //时针部分
+        
+                
+                anagle = ((tm->tm_hour%12)*30+tm->tm_min/2);
+                
+                if(hour_anagle<90)
+                {
+                        hour_anagle=anagle+360-90;
+                }
+                else
+                {
+                        hour_anagle=anagle-90;
+                }
+//        if(tm->tm_min==0)
+//        {
+                //檫除上一次的痕迹
+                LCD_SetTextColor(WHITE);
+                if(hour_anagle==0)
+                {
+                        temp=359;
+                        LCD_DrawLine_Polar(Xlabel, Ylabel, Hour_length, temp);
+                }
+                else
+                {
+                        LCD_DrawLine_Polar(Xlabel, Ylabel, Hour_length, hour_anagle-1);
+                }
+//                LCD_DrawLine_Polar(Xlabel, Ylabel, Hour_length, hour_anagle);
+//                LCD_DrawLine_Polar(Xlabel, Ylabel, Sec_length, hour_anagle+1);
+//        }
+                //画新的指针
+                LCD_SetTextColor(BLACK);
+                LCD_DrawLine_Polar(Xlabel, Ylabel, Hour_length, hour_anagle);
+        
 }

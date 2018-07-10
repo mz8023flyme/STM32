@@ -37,3 +37,5 @@
 .\objects\bsp_lcd.o: ..\User\LED\bsp_led.h
 .\objects\bsp_lcd.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\bsp_lcd.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\string.h
+.\objects\bsp_lcd.o: ..\User\LCD\ascii.h
+.\objects\bsp_lcd.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\math.h

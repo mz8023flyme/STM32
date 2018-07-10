@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\CMSIS;..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\User;..\User\LED;..\User\USART;..\User\LCD;..\User\font;..\User\SPI;..\User\Touch;..\User\Wulian</IncludePath>
+              <IncludePath>..\Libraries\CMSIS;..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\User;..\User\LED;..\User\USART;..\User\LCD;..\User\font;..\User\SPI;..\User\Touch;..\User\Wulian;..\User\rtc;..\User\ff9;..\User\BMP;..\User\sdcard</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -593,9 +593,54 @@
               <FilePath>..\User\SPI\bsp_spi.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_touch.c</FileName>
+              <FileName>bsp_calendar.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\Touch\bsp_touch.c</FilePath>
+              <FilePath>..\User\rtc\bsp_calendar.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_date.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\rtc\bsp_date.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\rtc\bsp_rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_bmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\BMP\bsp_bmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_sdfs_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\sdcard\bsp_sdfs_app.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_sdio_sdcard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\sdcard\bsp_sdio_sdcard.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>f99</GroupName>
+          <Files>
+            <File>
+              <FileName>diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\ff9\diskio.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\ff9\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>cc936.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\ff9\option\cc936.c</FilePath>
             </File>
           </Files>
         </Group>

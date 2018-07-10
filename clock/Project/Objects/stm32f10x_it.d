@@ -35,3 +35,4 @@
 .\objects\stm32f10x_it.o: ..\User\rtc\bsp_rtc.h
 .\objects\stm32f10x_it.o: ..\User\rtc\bsp_calendar.h
 .\objects\stm32f10x_it.o: ..\User\rtc\bsp_date.h
+.\objects\stm32f10x_it.o: ..\User\sdcard\bsp_sdio_sdcard.h

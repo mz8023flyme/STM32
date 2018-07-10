@@ -4,6 +4,14 @@
 #include "stm32f10x.h"	
 #include "fonts.h"
 #include "bsp_rtc.h"
+
+#define    Pi  3.1415926
+#define    Xlabel        122
+#define    Ylabel        122
+#define    Sec_length    70
+#define    Hour_length   50
+#define    Min_length    60
+   
 /********LCD控制引脚************/
 #define      FSMC_Bank_NORSRAMx		 FSMC_Bank1_NORSRAM1
 
@@ -115,6 +123,7 @@
 /******************************* 定义 ILI934 显示屏常用颜色 ********************************/
 #define      BACKGROUND         WHITE   //默认背景颜色
 
+#define      back_bmp                     RGB888_2_RGB565(0xee,0xf6,0xf9)
 #define      WHITE                         0xFFFF       //白色
 #define      BLACK                         0x0000       //黑色 
 #define      GREY                          0xF7DE       //灰色 
@@ -131,7 +140,7 @@
 #define      ORANGE			   0xFFA0	   //橙色
 
 #define RGB888_2_RGB565(R,G,B)		 (uint16_t)(((R & 0x1F) << 11) | ((G & 0x3F) << 5) | (B & 0x1F) )
-
+//c6f0ff
 
 
 /******************************* 定义 ILI934 常用命令 ********************************/
@@ -162,10 +171,13 @@ void LCD_zoomChar(uint16_t in_width,uint16_t in_heig,uint16_t out_width,
  uint16_t out_heig,uint8_t *in_ptr,uint8_t *out_ptr, uint8_t en_cn);
 void Delay ( __IO uint32_t nCount );
 void LCD_DrawLine ( uint16_t usX1, uint16_t usY1, uint16_t usX2, uint16_t usY2 );
+void LCD_DrawLine_Polar(uint16_t X1, uint16_t Y1, uint16_t L, uint16_t angle );
 void LCD_DrawRectangle ( uint16_t usX_Start, uint16_t usY_Start, uint16_t usWidth, uint16_t usHeight, uint8_t ucFilled );
 void LCD_SetTextColor(uint16_t Color);
 void LCD_Time_Show(struct rtc_time *tm);
-        
+uint16_t LCD_GetPointPixel ( uint16_t usX, uint16_t usY );
+__inline void LCD_Write_Cmd ( uint16_t usCmd );
+__inline void LCD_Write_Data ( uint16_t usData );
 
 
 #endif /* __BSP_LCD_H*/
