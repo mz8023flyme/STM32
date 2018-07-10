@@ -927,7 +927,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x57C78855)
 I (..\User\USART\bsp_usart.h)(0x58B58EC6)
 I (..\User\LED\bsp_led.h)(0x590A734E)
 I (D:\Program Files\MDK\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-F (..\User\Touch\bsp_touch.c)(0x5AE32578)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Libraries\CMSIS -I..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\User -I..\User\LED -I..\User\USART -I..\User\LCD -I..\User\font -I..\User\SPI -I..\User\Touch -I..\User\Wulian-I F:\Workspace\STM32\stm32f103.LCD-Touch\Project\RTE-I "D:\Program Files\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include"-I "D:\Program Files\MDK\ARM\CMSIS\Include"-D__UVISION_VERSION="515" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\bsp_touch.o --omf_browse .\objects\bsp_touch.crf --depend .\objects\bsp_touch.d)
+F (..\User\Touch\bsp_touch.c)(0x5B440435)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Libraries\CMSIS -I..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\User -I..\User\LED -I..\User\USART -I..\User\LCD -I..\User\font -I..\User\SPI -I..\User\Touch -I..\User\Wulian-I F:\Workspace\STM32\stm32f103.LCD-Touch\Project\RTE-I "D:\Program Files\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include"-I "D:\Program Files\MDK\ARM\CMSIS\Include"-D__UVISION_VERSION="515" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\bsp_touch.o --omf_browse .\objects\bsp_touch.crf --depend .\objects\bsp_touch.d)
 I (..\User\Touch\bsp_touch.h)(0x5909A21D)
 I (..\Libraries\CMSIS\stm32f10x.h)(0x57C78855)
 I (..\Libraries\CMSIS\core_cm3.h)(0x57C78855)

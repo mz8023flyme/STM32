@@ -628,7 +628,7 @@ void Calibrate_or_Get_TouchParaWithFlash(uint8_t LCD_Mode,uint8_t forceCal)
   * @param  pDisplayCoordinate ：该指针存放获取到的触摸点坐标
   * @param  pTouchPara：坐标校准系数
   * @retval 获取情况
-	*   该返回值为以下值之一：
+  *   该返回值为以下值之一：
   *     @arg 1 :获取成功
   *     @arg 0 :获取失败
   */
@@ -684,7 +684,7 @@ void LCD_TouchDown(strType_LCD_Coordinate * touch)
         LCD_Clear(152,152,58,48);
         LCD_DispString_CH(159,168,"流水灯");
 
-        /***在上面编写自己的触摸按下处理应用***/	
+        /***在上面编写自己的触摸按下处理应用***/ 
 }
 
 /**
