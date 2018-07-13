@@ -17,25 +17,25 @@ int main(void)
         while(1)
         {
                 TIM8->CCR1=15;
-                M1_Revolve(50);
-                M2_Revolve(50);
+                M1_Revolve(70);
+                M2_Revolve(70);
                 delay_ms(500);
-                M1_Revolve( 0 );
-                M2_Revolve( 0 );
+                M1_Revolve(0);
+                M2_Revolve(0);
                 delay_ms(500);
                 TIM8->CCR1=10;
-                M1_Revolve(-50);
-                M2_Revolve(-50);
+                M1_Revolve(-70);
+                M2_Revolve(-70);
                 delay_ms(500);
-                M1_Revolve( 0 );
-                M2_Revolve( 0 );
+                M1_Revolve(0);
+                M2_Revolve(0);
                 delay_ms(500);
                 TIM8->CCR1=20;
-                M1_Revolve(50);
-                M2_Revolve(50);
+                M1_Revolve(70);
+                M2_Revolve(70);
                 delay_ms(500);
-                TIM8->CCR1=15;
-                M1_Revolve( 0 );
-                M2_Revolve( 0 );
+                M1_Revolve(0);
+                M2_Revolve(0);
+                
         }
 }
