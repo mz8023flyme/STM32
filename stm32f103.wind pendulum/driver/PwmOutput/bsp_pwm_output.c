@@ -8,33 +8,33 @@
   */
 static void TIMx_GPIO_Config(void) 
 {
-  GPIO_InitTypeDef GPIO_InitStructure;
+        GPIO_InitTypeDef GPIO_InitStructure;
 
-	/* 设置TIM3CLK 为 72MHZ */
-//  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE); 
-  macTIM_APBxClock_FUN (macTIM_CLK, ENABLE);
+        /* 设置TIM3CLK 为 72MHZ */
+        //  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE); 
+        macTIM_APBxClock_FUN (macTIM_CLK, ENABLE);
 
-  /* GPIOA and GPIOB clock enable */
-  macTIM_GPIO_APBxClock_FUN (macTIM_GPIO_CLK, ENABLE); 
+        /* GPIOA and GPIOB clock enable */
+        macTIM_GPIO_APBxClock_FUN (macTIM_GPIO_CLK, ENABLE); 
 
-  /*GPIOA Configuration: TIM3 channel 1 as alternate function push-pull */
-  GPIO_InitStructure.GPIO_Pin =  macTIM_CH1_PIN;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;		    // 复用推挽输出
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_Init(macTIM_CH1_PORT, &GPIO_InitStructure);
+        /*GPIOA Configuration: TIM3 channel 1 as alternate function push-pull */
+        GPIO_InitStructure.GPIO_Pin =  macTIM_CH1_PIN;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;		    // 复用推挽输出
+        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+        GPIO_Init(macTIM_CH1_PORT, &GPIO_InitStructure);
 
-  /*GPIOB Configuration: TIM3 channel 2 as alternate function push-pull */
-  GPIO_InitStructure.GPIO_Pin =  macTIM_CH2_PIN;
-  GPIO_Init(macTIM_CH2_PORT, &GPIO_InitStructure);
+        /*GPIOB Configuration: TIM3 channel 2 as alternate function push-pull */
+        GPIO_InitStructure.GPIO_Pin =  macTIM_CH2_PIN;
+        GPIO_Init(macTIM_CH2_PORT, &GPIO_InitStructure);
 
-  /*GPIOB Configuration: TIM3 channel 3 as alternate function push-pull */
-  GPIO_InitStructure.GPIO_Pin =  macTIM_CH3_PIN;
-  GPIO_Init(macTIM_CH3_PORT, &GPIO_InitStructure);
-	
-  /*GPIOB Configuration: TIM3 channel 4 as alternate function push-pull */
-  GPIO_InitStructure.GPIO_Pin =  macTIM_CH4_PIN;
-  GPIO_Init(macTIM_CH4_PORT, &GPIO_InitStructure);
-	
+        /*GPIOB Configuration: TIM3 channel 3 as alternate function push-pull */
+        GPIO_InitStructure.GPIO_Pin =  macTIM_CH3_PIN;
+        GPIO_Init(macTIM_CH3_PORT, &GPIO_InitStructure);
+
+        /*GPIOB Configuration: TIM3 channel 4 as alternate function push-pull */
+        GPIO_InitStructure.GPIO_Pin =  macTIM_CH4_PIN;
+        GPIO_Init(macTIM_CH4_PORT, &GPIO_InitStructure);
+
 }
 
 /**
