@@ -13,7 +13,7 @@ static void PWM_GPIO_Config(void)
         RCC_APB2PeriphClockCmd(MOTOR_PWM_CLOCK, ENABLE);
         RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
         
-        GPIO_InitStructure.GPIO_Pin =  MOTOR1_PWM_PIN | MOTOR2_PWM_PIN |Steer_PWM_PIN;
+        GPIO_InitStructure.GPIO_Pin =  MOTOR1_PWM_PIN | MOTOR2_PWM_PIN |Steer1_PWM_PIN|Steer2_PWM_PIN;
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
         GPIO_Init(GPIOC, &GPIO_InitStructure);
@@ -61,6 +61,7 @@ static void PWM_Mode_Config(void)
         // ’ºø’±»≈‰÷√
         uint8_t CCR1_Val = 0;
         uint8_t CCR2_Val = 0;
+        uint8_t CCR3_Val = 0;
         uint8_t CCR4_Val = 0;
         
         TIM_OCInitTypeDef  TIM_OCInitStructure;
@@ -79,6 +80,10 @@ static void PWM_Mode_Config(void)
         TIM_OCInitStructure.TIM_Pulse = CCR2_Val;    //≈‰÷√CCRºƒ¥Ê∆˜      ’ºø’±» = £®CCR/ARR£©
         TIM_OC2Init(TIM8,&TIM_OCInitStructure);     
 //        TIM_OC2PreloadConfig(TIM8, TIM_OCPreload_Enable);
+        
+        TIM_OCInitStructure.TIM_Pulse = CCR3_Val;    //≈‰÷√CCRºƒ¥Ê∆˜      ’ºø’±» = £®CCR/ARR£©
+        TIM_OC3Init(TIM8,&TIM_OCInitStructure);     
+//        TIM_OC1PreloadConfig(TIM8, TIM_OCPreload_Enable);
         
          /*≈‰÷√∂® ±∆˜Õ®µ¿4*/
         TIM_OCInitStructure.TIM_Pulse = CCR4_Val;    //≈‰÷√CCRºƒ¥Ê∆˜      ’ºø’±» = £®CCR/ARR£©

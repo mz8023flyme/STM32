@@ -9,8 +9,8 @@
 #define   MOTOR1_PWM_PIN        GPIO_Pin_7
 #define   MOTOR2_PWM_PIN        GPIO_Pin_9
 
-#define   Steer_PWM_PIN         GPIO_Pin_6
-
+#define   Steer1_PWM_PIN         GPIO_Pin_6
+#define   Steer2_PWM_PIN         GPIO_Pin_8
 
 
 #define   MOTOR_DIR_CLOCK       RCC_APB2Periph_GPIOE
