@@ -56,4 +56,8 @@ void systick_init(void);                                // 初始化延时函数
 void delay_us(u32 nus);                                 // 延时 nus 微秒, 最大延时 1864135us
 void delay_ms(u16 nms);                                 // 延时 nms 毫秒, 最大延时 65536ms
 
+
+
+
+extern void MY_NVIC_Init(u8 NVIC_PreemptionPriority,u8 NVIC_SubPriority,u8 NVIC_Channel);
 #endif /* __BSP_SYSTICK_H */

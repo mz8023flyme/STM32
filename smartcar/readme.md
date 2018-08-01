@@ -8,7 +8,7 @@ PWM 引脚  TIM8 CH2(PC7) CH4(PC9)
 
 舵机 PWM 输出引脚  TIM8 CH1(PC6)
 
-
+超声波舵机      TIM8 CH3(PC8)
 
 
 
