@@ -1,6 +1,7 @@
 #include "bsp_motor.h"
 #include "bsp_systick.h"
 #include "bsp_usart.h"
+#include "main.h"
 
 /**
  * @brief 配置 TIM8 定时器输出 PWM 波
@@ -172,6 +173,86 @@ int abs (int val)
         temp=val;
         return temp;
 }
+
+/**
+ * @brief  距离扫描函数
+ * @retval 返回距最大的那个方向
+ */
+unsigned char Distance_Scan(void )
+{
+        u8 i,direction ;
+        
+        u16 max=0, distance[12]={0};
+        
+        for (i=0;i<6;i++)
+        {
+                TIM8->CCR3 = (15-i) ;
+//                Distance=Hcsr04GetLength();
+                distance[TIM8->CCR3-9]+=(u16)Distance;
+                delay_ms(100);
+        }
+        for (i=0;i<12;i++)
+        {
+                TIM8->CCR3 = (i+9) ;
+                distance[TIM8->CCR3-9]+=(u16)Distance;
+                delay_ms(100);
+        }
+        for (i=0;i<6;i++)
+        {
+                TIM8->CCR3 = (21-i) ;
+                distance[TIM8->CCR3-9]+=(u16)Distance;
+                delay_ms(100);
+        }
+        
+        for (i=0;i<12;i++)
+        {
+                printf("distance%d  %d  ",i,distance[i]);
+        }
+        for (i=0;i<12;i++)   //因为大舵机不能满转，所以小舵机的比较也就没有必要加上两边的范围
+        {
+                if(distance[i]>max)
+                {
+                        max=distance[i];
+                        direction=i;
+                }
+        }
+        
+        if(max<70)
+        {
+                //发现被包围了没有找到可以出去的路只有倒车
+                
+        }
+        
+        printf("\n  max %d direction %d",max,direction+9);
+        
+        
+        TIM8->CCR3 = 15 ;
+        return (direction+9);
+        
+}
+
+/**
+ * @brief  因避障而转弯的函数
+ * @param  direction 这个方向的距离最远
+ */
+void BZ_Turn(u8 direction)
+{
+        TIM8->CCR1 = direction;
+        printf("\n   direction   %d",direction);
+        
+        M1_Revolve(-100);
+        M2_Revolve(-100);
+        delay_ms(10000);
+        TIM8->CCR1 = 30-direction;
+        printf("\n   30-direction   %d",(30-direction));
+        M1_Revolve(100);
+        M2_Revolve(100);
+        delay_ms(10000);
+        TIM8->CCR1=15;
+}
+
+
+
 
 
 

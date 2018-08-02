@@ -744,7 +744,7 @@ I (..\User\sdcard\bsp_sdfs_app.h)(0x557FD97B)
 I (..\User\ff9\diskio.h)(0x536651CF)
 I (..\User\ff9\integer.h)(0x536651CF)
 I (..\User\sdcard\bsp_sdio_sdcard.h)(0x536651CF)
-F (..\User\stm32f10x_it.c)(0x5B44C923)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Libraries\CMSIS -I..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\User -I..\User\LED -I..\User\USART -I..\User\LCD -I..\User\font -I..\User\SPI -I..\User\Touch -I..\User\Wulian -I..\User\rtc -I..\User\ff9 -I..\User\BMP -I..\User\sdcard-I F:\Workspace\STM32\clock\Project\RTE-I "D:\Program Files\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include"-I "D:\Program Files\MDK\ARM\CMSIS\Include"-D__UVISION_VERSION="515" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
+F (..\User\stm32f10x_it.c)(0x5B44C9A6)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Libraries\CMSIS -I..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\User -I..\User\LED -I..\User\USART -I..\User\LCD -I..\User\font -I..\User\SPI -I..\User\Touch -I..\User\Wulian -I..\User\rtc -I..\User\ff9 -I..\User\BMP -I..\User\sdcard-I F:\Workspace\STM32\clock\Project\RTE-I "D:\Program Files\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include"-I "D:\Program Files\MDK\ARM\CMSIS\Include"-D__UVISION_VERSION="515" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
 I (..\User\stm32f10x_it.h)(0x57C78855)
 I (..\Libraries\CMSIS\stm32f10x.h)(0x57C78855)
 I (..\Libraries\CMSIS\core_cm3.h)(0x57C78855)
@@ -843,7 +843,7 @@ I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x57C78855)
 I (..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x57C78855)
 I (..\User\LED\bsp_led.h)(0x590A734E)
 I (D:\Program Files\MDK\ARM\ARMCC\include\stdio.h)(0x54C245B8)
-F (..\User\LCD\bsp_lcd.c)(0x5B44C858)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Libraries\CMSIS -I..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\User -I..\User\LED -I..\User\USART -I..\User\LCD -I..\User\font -I..\User\SPI -I..\User\Touch -I..\User\Wulian -I..\User\rtc -I..\User\ff9 -I..\User\BMP -I..\User\sdcard-I F:\Workspace\STM32\clock\Project\RTE-I "D:\Program Files\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include"-I "D:\Program Files\MDK\ARM\CMSIS\Include"-D__UVISION_VERSION="515" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\bsp_lcd.o --omf_browse .\objects\bsp_lcd.crf --depend .\objects\bsp_lcd.d)
+F (..\User\LCD\bsp_lcd.c)(0x5B62EE5B)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I..\Libraries\CMSIS -I..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\User -I..\User\LED -I..\User\USART -I..\User\LCD -I..\User\font -I..\User\SPI -I..\User\Touch -I..\User\Wulian -I..\User\rtc -I..\User\ff9 -I..\User\BMP -I..\User\sdcard-I F:\Workspace\STM32\clock\Project\RTE-I "D:\Program Files\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include"-I "D:\Program Files\MDK\ARM\CMSIS\Include"-D__UVISION_VERSION="515" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\bsp_lcd.o --omf_browse .\objects\bsp_lcd.crf --depend .\objects\bsp_lcd.d)
 I (..\User\LCD\bsp_lcd.h)(0x5B44B70E)
 I (..\Libraries\CMSIS\stm32f10x.h)(0x57C78855)
 I (..\Libraries\CMSIS\core_cm3.h)(0x57C78855)

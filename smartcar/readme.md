@@ -2,14 +2,23 @@
 
 ## STM32F103ZET6 主控芯片控制小车
 
-PWM 引脚  TIM8 CH2(PC7) CH4(PC9) 
+###引脚的功能与具体的引脚
 
-电机方向控制引脚  PE7   PE9   PE13   PE15
+|    引脚功能    |                引脚                    |
+|      PWM       |       TIM8 CH2(PC7) CH4(PC9)           |
+|                |                                        |
+|  电机方向控制  |       PE7   PE9   PE13   PE15          |
+|                |                                        |
+| 舵机 PWM 输出  |           TIM8 CH1(PC6)                |
+|                |                                        |
+|   超声波舵机   |          TIM8 CH3(PC8)                 |
+|                |                                        |
+|    超声波      |       TRIG (PB1)  ECHO  (PB0)          |
 
-舵机 PWM 输出引脚  TIM8 CH1(PC6)
+###注意事项
 
-超声波舵机      TIM8 CH3(PC8)
+电机的初始化  TIM8  必须放在  超声波的初始化  TIM6 之前
 
+超声波舵机 25 左边  5 右边  (CCR值)
 
-
-
+转向舵机  9 左边   21 右边  (CCR值)

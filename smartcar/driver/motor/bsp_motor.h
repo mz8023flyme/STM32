@@ -32,6 +32,8 @@ void TIM8_PWM_Init(void);
 void M1_Revolve(int val);
 void M2_Revolve(int val);
 void MOTOR_GPIO_Config(void);
+unsigned char Distance_Scan(void );
+void BZ_Turn(u8 direction);
 
 
 #endif /*__BSP_MOTOR_H*/

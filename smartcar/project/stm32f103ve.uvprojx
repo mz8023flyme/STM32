@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\startup;..\library\inc;..\user;..\driver\led;..\driver\systick;..\driver\usart;..\driver\control;..\driver\motor;..\driver\supper;..\driver\hcsr04</IncludePath>
+              <IncludePath>..\startup;..\library\inc;..\user;..\driver\led;..\driver\systick;..\driver\usart;..\driver\control;..\driver\motor;..\driver\hcsr04</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -486,11 +486,6 @@
               <FileName>bsp_motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\driver\motor\bsp_motor.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_sound.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\driver\supper\bsp_sound.c</FilePath>
             </File>
             <File>
               <FileName>bsp_hcsr04.c</FileName>

@@ -152,6 +152,7 @@ void LCD_FSMC_Config(void)
         writeTimStruct.FSMC_CLKDivision=0;	//SRAM没有用到
         writeTimStruct.FSMC_DataLatency=0;	//SRAM没有用到
         writeTimStruct.FSMC_DataSetupTime=2;	//理论值为2  
+        
 
         SRAMInitStructure.FSMC_Bank = FSMC_Bank_NORSRAMx ;
         SRAMInitStructure.FSMC_ExtendedMode = FSMC_ExtendedMode_Disable ;

@@ -7,11 +7,6 @@
 * TRIG    TIM6    PB1 ‰≥ˆ
 * ECHO     PB0  ‰»Î
 
-
-   
-
-
-
 */
 
 #define HCSR04_PORT     GPIOB
@@ -24,5 +19,11 @@
 
 void Hcsr04Init(void);
 float Hcsr04GetLength(void );
+
+
+
+
+
+
 
 #endif  /*__BSP_HCSR04_H*/
