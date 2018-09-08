@@ -36,9 +36,9 @@ extern u8 Read[32];
 #define RF_SETUP        0x06  //RF寄存器;bit3:传输速率(0:1Mbps,1:2Mbps);bit2:1,发射功率;bit0:低噪声放大器增益
 #define STATUS          0x07  //状态寄存器;bit0:TX FIFO满标志;bit3:1,接收数据通道号(最大:6);bit4,达到最多次重发
                               //bit5:数据发送完成中断;bit6:接收数据中断;
-#define MAX_TX  	0x10  //达到最大发送次数中断
-#define TX_OK   	0x20  //TX发送完成中断
-#define RX_OK   	0x40  //接收到数据中断
+#define MAX_TX          0x10  //达到最大发送次数中断
+#define TX_OK           0x20  //TX发送完成中断
+#define RX_OK           0x40  //接收到数据中断
 
 #define OBSERVE_TX      0x08  //发送检测寄存器,bit7:4,数据包丢失计数器;bit3:0,重发计数器
 #define CD              0x09  //载波检测寄存器,bit0,载波检测;
@@ -59,9 +59,29 @@ extern u8 Read[32];
                               //bit4,TX FIFO空标志;bit5,TX FIFO满标志;bit6,1,循环发送上一数据包.0,不循环;
                               
 //24L01操作线
-#define NRF24L01_CE   PCout(5) //24L01片选信号
-#define NRF24L01_CSN  PCout(6) //SPI片选信号	   
-#define NRF24L01_IRQ  PCin(4)  //IRQ主机数据输入
+#define NRF24L01_CE   PBout(10) //24L01片选信号
+#define NRF24L01_CSN  PCout(14) //SPI片选信号	   
+#define NRF24L01_IRQ  PCin(15)  //IRQ主机数据输入
+
+
+//IRQ 引脚
+#define      NRF_IRQ_CLK                  RCC_APB2Periph_GPIOC    
+#define      NRF_IRQ_PORT                 GPIOC
+#define      NRF_IRQ_PIN                  GPIO_Pin_15
+
+//CE引脚(决定 NRF 是 TX 模式 还是 RX 模式)
+#define      NRF_CE_CLK                  RCC_APB2Periph_GPIOB    
+#define      NRF_CE_PORT                 GPIOB
+#define      NRF_CE_PIN                  GPIO_Pin_10
+
+//CS(NSS)引脚 片选选普通GPIO即可
+#define      NRF_CS_CLK                  RCC_APB2Periph_GPIOC    
+#define      NRF_CS_PORT                 GPIOC
+#define      NRF_CS_PIN                  GPIO_Pin_14
+
+
+
+
 
 //24L01发送接收数据宽度定义
 #define TX_ADR_WIDTH    5   //5字节的地址宽度

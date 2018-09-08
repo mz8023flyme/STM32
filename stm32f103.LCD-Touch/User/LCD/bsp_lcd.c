@@ -14,9 +14,10 @@ uint16_t LCD_Y_LENGTH = ILI9341_MORE_PIXEL;
 uint8_t zoomBuff[ZOOMMAXBUFF] = {0};	//用于缩放的缓存，最大支持到128*128
 uint8_t zoomTempBuff[1024] = {0};
 
+
 static sFONT *LCD_Currentfonts = &Font8x16;  //英文字体
 static uint16_t CurrentTextColor   = BLACK;//前景色
-static uint16_t CurrentBackColor   = WHITE;//背景色		 
+static uint16_t CurrentBackColor   = WHITE;//背景色 
 	 
 void LCD_GPIO_Config(void)
 {
@@ -629,7 +630,7 @@ void LCD_DispChar_EN ( uint16_t usX, uint16_t usY, const char cChar )
  * @param  line ：在特定扫描方向下字符串的起始Y坐标
   *   本参数可使用宏LINE(0)、LINE(1)等方式指定文字坐标，
   *   宏LINE(x)会根据当前选择的字体来计算Y坐标值。
-	*		显示中文且使用LINE宏时，需要把英文字体设置成Font8x16
+  *  显示中文且使用LINE宏时，需要把英文字体设置成Font8x16
  * @param  pStr ：要显示的英文字符串的首地址
  * @note 可使用LCD_SetBackColor、LCD_SetTextColor、LCD_SetColors函数设置颜色
  * @retval 无

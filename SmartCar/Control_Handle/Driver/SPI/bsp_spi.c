@@ -16,64 +16,40 @@ static uint16_t SPI_TIMEOUT_UserCallback(uint8_t errorCode);
  * @param 无
  * @retval 无
  */
- static void SPI_GPIO_Init(void)
- {
-         //定义一个GPIO结构体
-         GPIO_InitTypeDef GPIO_InitStructure;
-       
-         /* 使能 SPI 相关引脚的时钟 */
-         NRF_SPI_GPIO_APBxClock_FUN(RCC_APB2Periph_GPIOC,ENABLE);
-         NRF_SPI_GPIO_APBxClock_FUN(RCC_APB2Periph_GPIOA,ENABLE);
-         /* 配置 SPI 的 CS(片选段) 引脚， 普通IO口即可*/
-         /*  选择要配置的引脚 */
-         GPIO_InitStructure.GPIO_Pin = NRF_SPI_CS_PIN;
-          /*  配置引脚速率 */
-         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-          /*  配置引脚模式 */
-         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-          /*  初始化引脚 */
-         GPIO_Init(NRF_SPI_CS_PORT,&GPIO_InitStructure);
-         
-         /* 配置 SPI 的 SCK 引脚*/
-         GPIO_InitStructure.GPIO_Pin = NRF_SPI_SCK_PIN;
-         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-         GPIO_Init(NRF_SPI_SCK_PORT,&GPIO_InitStructure); 
-         
-         /* 配置 SPI 的 MOSI 引脚*/
-         GPIO_InitStructure.GPIO_Pin = NRF_SPI_MOSI_PIN;
-         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-         GPIO_Init(NRF_SPI_MOSI_PORT,&GPIO_InitStructure); 
-         
-         /* 配置 SPI 的 MISO 引脚*/
-         GPIO_InitStructure.GPIO_Pin = NRF_SPI_MISO_PIN;
-         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-         GPIO_Init(NRF_SPI_MISO_PORT,&GPIO_InitStructure);
-         
-         /* 配置 SPI 的 CE 引脚*/
-         GPIO_InitStructure.GPIO_Pin = NRF_SPI_CE_PIN;
-         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-         GPIO_Init(NRF_SPI_CE_PORT,&GPIO_InitStructure);
-         
-         /* 配置 SPI 的 IRQ 引脚*/
-         GPIO_InitStructure.GPIO_Pin = NRF_SPI_IRQ_PIN;
-         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-         GPIO_Init(NRF_SPI_IRQ_PORT,&GPIO_InitStructure);
-         PCout(4)=1;
-         
-         PAout(5)=1;
-         PAout(6)=1;
-         PAout(7)=1;
-         NRF24L01_CE =  0;
-         /* 停止信号 NRF：CS 引脚高电平*/ 
-         SPI_CS_HIGH();
-         
- 
-                 
- }
+static void SPI_GPIO_Init(void)
+{
+        //定义一个GPIO结构体
+        GPIO_InitTypeDef GPIO_InitStructure;
+
+        /* 使能 SPI 相关引脚的时钟 */
+
+        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
+
+        /* 配置 SPI 的 SCK 引脚*/
+        GPIO_InitStructure.GPIO_Pin = NRF_SPI_SCK_PIN;
+        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+        GPIO_Init(NRF_SPI_SCK_PORT,&GPIO_InitStructure); 
+
+        /* 配置 SPI 的 MOSI 引脚*/
+        GPIO_InitStructure.GPIO_Pin = NRF_SPI_MOSI_PIN;
+        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+        GPIO_Init(NRF_SPI_MOSI_PORT,&GPIO_InitStructure); 
+
+        /* 配置 SPI 的 MISO 引脚*/
+        GPIO_InitStructure.GPIO_Pin = NRF_SPI_MISO_PIN;
+        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+        GPIO_Init(NRF_SPI_MISO_PORT,&GPIO_InitStructure);
+
+        PAout(5)=1;
+        PAout(6)=1;
+        PAout(7)=1;
+        
+        /* 停止信号 NRF：CS 引脚高电平*/ 
+        SPI_CS_HIGH();
+}
  
   /**
   * @brief SPI 的模式配置

@@ -12,18 +12,30 @@ const u8 RX_ADDRESS[RX_ADR_WIDTH]={0x34,0x43,0x10,0x10,0x01}; //发送地址
 void NRF_GPIO_Init(void)
 {
         //定义一个GPIO结构体
-         GPIO_InitTypeDef GPIO_InitStructure;
-        
+        GPIO_InitTypeDef GPIO_InitStructure;
+
         //开启引脚时钟
-         NRF_Judge_APBxClock_FUN(NRF_Judge_PORT_CLK,ENABLE);
+        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
+        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);
         
-         /*  配置判断收发模式的引脚  */
-         /*  选择判断NRF为收发模式的引脚 */
-         GPIO_InitStructure.GPIO_Pin = NRF_Judge_PIN;
-          /*  配置引脚模式 */
-         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-          /*  初始化引脚 */
-         GPIO_Init(NRF_Judge_PORT,&GPIO_InitStructure);
+        GPIO_InitStructure.GPIO_Pin = NRF_IRQ_PIN;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+        GPIO_Init(NRF_IRQ_PORT,&GPIO_InitStructure);
+        
+        GPIO_InitStructure.GPIO_Pin = NRF_CE_PIN;
+        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+        GPIO_Init(NRF_CE_PORT,&GPIO_InitStructure);
+        
+        
+        GPIO_InitStructure.GPIO_Pin = NRF_CS_PIN;
+        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+        GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+        GPIO_Init(NRF_CS_PORT,&GPIO_InitStructure);
+        
+        
+        NRF24L01_CSN =  1;
+        NRF24L01_CE  =  0;
 }
 
 
@@ -153,7 +165,7 @@ u8 NRF24L01_TxPacket(u8 *txbuf)
 
 
  /**
-  * @brief  启动NRF24L01接受一次数据
+  * @brief  启动NRF24L01接收一次数据
   * @param  rxbuf:用来存放接受到的数据
   * @retval 返回值:0，接收完成；其他，错误代码
   */

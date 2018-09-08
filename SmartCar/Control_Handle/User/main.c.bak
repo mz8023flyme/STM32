@@ -1,23 +1,57 @@
 #include "main.h"
 
+u8 Mode = 1 ; // NRF的工作模式 1 TX  0 RX 
 
 int main(void)
 {
+        //advance作为电机的（0-200）voice 超声波舵机（5-25）turn作为转向舵机（10-20）
+        u8 advance,turn,voice;
+        char str[100];
         NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
         
         systick_init();
         usart_init();
         SPI_bsp_Init();
         NRF_GPIO_Init();
+        ADCx_Init();
         
+        while( NRF24L01_Check() )
+        {
+               printf("[%s][%d]\r\n", __func__, __LINE__);
+               delay_ms(1000);
+        }
+        TX_Mode();
         while(1)
         {
-                printf("[%s][%d]", __func__, __LINE__);
-                delay_ms(1000);
+                printf("[%s][%d]\n", __func__, __LINE__);
+                ADC_Value[0] =(float) ADC_ConvertedValue[0]/4096*3.3;
+                ADC_Value[1] =(float) ADC_ConvertedValue[1]/4096*3.3;
+                ADC_Value[2] =(float) ADC_ConvertedValue[2]/4096*3.3;
+                ADC_Value[3] =(float) ADC_ConvertedValue[3]/4096*3.3;
+                ADC_Value[4] =(float) ADC_ConvertedValue[4]/4096*3.3;
+//                printf("\r\n CH0 value = %f V \r\n",ADC_Value[0]);
+                printf("\r\n CH1 value = %f V \r\n",ADC_Value[1]);
+                printf("\r\n CH2 value = %f V \r\n",ADC_Value[2]);
+                printf("\r\n CH3 value = %f V \r\n",ADC_Value[3]);
+//                printf("\r\n CH4 value = %f V \r\n",ADC_Value[4]);
+                
+                advance = ADC_Value[2]/3.3*200+1;   //+1处理1.63v与1.65v带来的偏差
+                printf("advance : %d   ",advance);
+                
+                turn = (char)((ADC_Value[1]*10)/3.3+10);
+                printf("turn : %d   ",turn);
+                
+                voice = ADC_Value[3]/3.3*20+5;
+                printf("voice : %d   \n",voice);
+                
+                sprintf(str,"advance_%d_turn_%d_voice_%d_#",advance ,turn ,voice );
+                printf("%s",str);
+                NRF24L01_TxPacket(str);
+                delay_ms(300);
         }
 }
 
-
+//advance:*_turn:*_voice:*_lkey:*_rkey:*_#(传输格式)
 /*
 int main(void)
 {
@@ -93,3 +127,5 @@ int main(void)
 }
 
 */
+
+

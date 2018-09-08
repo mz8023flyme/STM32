@@ -13,13 +13,13 @@ int main(void)
         
         LCD_Init();
         
-        TOUCH_Init();
+//        TOUCH_Init();
         
         USART_Config ();
         
-        LED_GPIO_Config();
-        
-        BEEP_GPIO_Config();
+//        LED_GPIO_Config();
+//        
+//        BEEP_GPIO_Config();
         
         Screen_Init();
         
@@ -28,18 +28,19 @@ int main(void)
         LCD_SetColors(RED,WHITE);
         
 //        LCD_DispString_CH(88,50,"秉火物联");
+        LCD_DrawRectangle(29,100,60,50,0);
         LCD_DisplayStringEx(56,40,32,32,(uint8_t *)"秉火物联",0);
         /*是否强制校准，若flash里有参数则不校准
         参数一为扫描方式参数二1为强制校准0不强制校准*/
-        Calibrate_or_Get_TouchParaWithFlash(6,0);
-        
+//        Calibrate_or_Get_TouchParaWithFlash(6,0);
+//        LCD_DispString_CH(0,0,"看");
         
 //        LCD_DrawLine(30,100,30,50);
         
 //        LCD_Touch_Calibrate(3);//屏幕校准
         while(1)
         {
-                LCD_TouchEvenHandler();
+//                LCD_TouchEvenHandler();
                 
                 
                 

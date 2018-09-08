@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\startup;..\library\inc;..\user;..\driver\led;..\driver\systick;..\driver\usart;..\driver\control;..\driver\motor;..\driver\hcsr04;..\driver\timer</IncludePath>
+              <IncludePath>..\startup;..\library\inc;..\user;..\driver\led;..\driver\systick;..\driver\usart;..\driver\control;..\driver\motor;..\driver\hcsr04;..\driver\timer;..\driver\NRF24L01;..\driver\SPI;..\driver\adc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -467,6 +467,16 @@
               <FileType>1</FileType>
               <FilePath>..\library\src\stm32f10x_gpio.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f10x_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\library\src\stm32f10x_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\library\src\stm32f10x_adc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -496,6 +506,21 @@
               <FileName>bsp_timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\driver\timer\bsp_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_NRF24L01.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\NRF24L01\bsp_NRF24L01.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\SPI\bsp_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\adc\bsp_adc.c</FilePath>
             </File>
           </Files>
         </Group>

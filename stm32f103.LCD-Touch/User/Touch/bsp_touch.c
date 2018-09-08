@@ -224,7 +224,7 @@ uint8_t touch_detect(void)
                         else
                         {
                                 touch_state = TOUCH_STATE_WAITING;
-                                result = TOUCH_NOT_PRESSED;							
+                                result = TOUCH_NOT_PRESSED;     
                         }       
                                 
                 }
@@ -857,33 +857,33 @@ void LCD_TouchEvenHandler(void )
 
 void Screen_Init(void)
 {
-	
-	LCD_SetColors(RED,WHITE);
-	LCD_Clear(0,0,240,320);
-	LCD_SetTextColor(RED);
-	LCD_DrawRectangle(29,100,60,50,0);
-	LCD_DispString_CH(43,117,"ºìµÆ");
-	
-	LCD_SetTextColor(GREEN);
-	LCD_DrawRectangle(90,100,60,50,0);
-	LCD_DispString_CH(108,117,"ÂÌµÆ");
-	
-	LCD_SetTextColor(BLUE);
-	LCD_DrawRectangle(151,100,60,50,0);
-	LCD_DispString_CH(169,117,"À¶µÆ");
-	
-	LCD_SetTextColor(ORANGE);
-	LCD_DrawRectangle(29,151,60,50,0);
-	LCD_DispString_CH(35,167,"·äÃùÆ÷");
-	
-	LCD_SetTextColor(BLACK);
-	LCD_DrawRectangle(90,151,60,50,0);
-	LCD_DispString_CH(108,167,"¸´Î»");
-	
-	LCD_SetTextColor(MAGENTA);
-	LCD_DrawRectangle(151,151,60,50,0);
-	LCD_DispString_CH(161,167,"Á÷Ë®µÆ");
-	
+
+        LCD_SetColors(RED,WHITE);
+        LCD_Clear(0,0,240,320);
+        LCD_SetTextColor(RED);
+        LCD_DrawRectangle(29,100,60,50,0);
+        LCD_DispString_CH(43,117,"ºìµÆ");
+
+        LCD_SetTextColor(GREEN);
+        LCD_DrawRectangle(90,100,60,50,0);
+        LCD_DispString_CH(108,117,"ÂÌµÆ");
+
+        LCD_SetTextColor(BLUE);
+        LCD_DrawRectangle(151,100,60,50,0);
+        LCD_DispString_CH(169,117,"À¶µÆ");
+
+        LCD_SetTextColor(ORANGE);
+        LCD_DrawRectangle(29,151,60,50,0);
+        LCD_DispString_CH(35,167,"·äÃùÆ÷");
+
+        LCD_SetTextColor(BLACK);
+        LCD_DrawRectangle(90,151,60,50,0);
+        LCD_DispString_CH(108,167,"¸´Î»");
+
+        LCD_SetTextColor(MAGENTA);
+        LCD_DrawRectangle(151,151,60,50,0);
+        LCD_DispString_CH(161,167,"Á÷Ë®µÆ");
+
 }
 
 
