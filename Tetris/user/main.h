@@ -10,6 +10,7 @@
 #include "bsp_basictime.h"
 #include "bsp_tetris.h"
 #include "bsp_adc.h"
+#include "bsp_key.h"
 
 #include <time.h>
 #include <stdlib.h>
@@ -20,7 +21,7 @@
 
 
 u8 Make_Random (void);
-
+void Key_Board_Scan(void);
 
 
 #endif   /* __MAIN_H_ */

@@ -7,8 +7,8 @@
 
 typedef struct
 {
-        char x; 
-        u16 y; 
+        u8 x; 
+        u8 y; 
         u16 Right; 
         u16 Down; 
         u8 CurNum; 
@@ -19,7 +19,11 @@ typedef struct
 void LCD_Tetris_Show(void);
 void Creat_Shap(void);
 void Tetris_Dowm(void);
-        
+void  Tetris_Rotate(void);
+void  Tetris_Right(void);
+void  Tetris_Left(void);
+void Clean_Line(void);
+
 
 
 #endif /*__BSP_TETRIS_H*/

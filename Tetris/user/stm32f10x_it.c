@@ -14,8 +14,7 @@ void  BASIC_TIM_IRQHandler (void)
                 if(Time>=1000)
                 {
                         Time=0;
-                        Tetris_Dowm( );
-                        printf("[%s][%d]\r\n", __func__, __LINE__);
+                        Tetris_Dowm();
                 }
         }
         TIM_ClearITPendingBit(BASIC_TIM , TIM_FLAG_Update);     

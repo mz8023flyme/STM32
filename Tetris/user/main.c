@@ -29,17 +29,80 @@ int main(void)
         Shape_Structer.NextNum = Make_Random();
         
         BASIC_TIM_Init();
+        KEY_GPIO_Config();
         Creat_Shap( );
         while(1)
         {
                 
                 LCD_Tetris_Show();
+                Key_Board_Scan();
 //                printf("[%s][%d]\r\n", __func__, __LINE__);
                 printf("\n\n\n\n");
-                delay_ms(300);
+                delay_ms(100);
         }
 }
 
+
+
+void Key_Board_Scan(void)
+{
+        if(Key_Scan(KEY_LEFT_GPIO_PORT,KEY_LEFT_GPIO_PIN)==KEY_ON)
+        {
+                delay_ms(10);
+                if(Key_Scan(KEY_LEFT_GPIO_PORT,KEY_LEFT_GPIO_PIN)==KEY_ON)
+                {
+                        //左移函数
+                        Tetris_Left();
+                }
+        }
+        
+        if(Key_Scan(KEY_RIGHT_GPIO_PORT,KEY_RIGHT_GPIO_PIN)==KEY_ON)
+        {
+                delay_ms(10);
+                if(Key_Scan(KEY_RIGHT_GPIO_PORT,KEY_RIGHT_GPIO_PIN)==KEY_ON)
+                {
+                        //右移函数
+                        Tetris_Right();
+                }
+        }
+        
+        if(Key_Scan(KEY_DOWN_GPIO_PORT,KEY_DOWN_GPIO_PIN)==KEY_ON)
+        {
+                delay_ms(10);
+                if(Key_Scan(KEY_DOWN_GPIO_PORT,KEY_DOWN_GPIO_PIN)==KEY_ON)
+                {
+                        //快速下降函数
+                }
+        }
+        
+        if(Key_Scan(KEY_PAUSE_GPIO_PORT,KEY_PAUSE_GPIO_PIN)==KEY_ON)
+        {
+                delay_ms(10);
+                if(Key_Scan(KEY_PAUSE_GPIO_PORT,KEY_PAUSE_GPIO_PIN)==KEY_ON)
+                {
+                        //暂停函数
+                }
+        }
+        
+        if(Key_Scan(KEY_RESET_GPIO_PORT,KEY_RESET_GPIO_PIN)==KEY_ON)
+        {
+                delay_ms(10);
+                if(Key_Scan(KEY_RESET_GPIO_PORT,KEY_RESET_GPIO_PIN)==KEY_ON)
+                {
+                        //复位函数
+                }
+        }
+        
+        if(Key_Scan(KEY_ROTATE_GPIO_PORT,KEY_ROTATE_GPIO_PIN)==KEY_ON)
+        {
+                delay_ms(10);
+                if(Key_Scan(KEY_ROTATE_GPIO_PORT,KEY_ROTATE_GPIO_PIN)==KEY_ON)
+                {
+                        //变形函数
+                        Tetris_Rotate();
+                }
+        }
+}
 
 
 u8 Make_Random (void)

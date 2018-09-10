@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\startup;..\library\inc;..\user;..\driver\led;..\driver\systick;..\driver\usart;..\driver\lcd;..\driver\SPI;..\driver\font;..\driver\Tetris;..\driver\BasicTime;..\driver\adc</IncludePath>
+              <IncludePath>..\startup;..\library\inc;..\user;..\driver\led;..\driver\systick;..\driver\usart;..\driver\lcd;..\driver\SPI;..\driver\font;..\driver\Tetris;..\driver\BasicTime;..\driver\adc;..\driver\KEY</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -531,6 +531,11 @@
               <FileName>bsp_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\driver\adc\bsp_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\driver\KEY\bsp_key.c</FilePath>
             </File>
           </Files>
         </Group>
