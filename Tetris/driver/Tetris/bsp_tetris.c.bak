@@ -157,6 +157,9 @@ void Tetris_Dowm()
                                         }
                                 }
                                 Clean_Line();
+                                Clean_Line();
+                                Clean_Line();
+                                Clean_Line();
 //                                printf("[%s][%d]\r\n", __func__, __LINE__);
                                 Down_Flag=0;
                                 Creat_Shap();
@@ -219,7 +222,7 @@ void  Tetris_Rotate(void)
                                         {
                                                 if(Model[i][j]!=0)
                                                 {
-                                                        Board[i+Shape_Structer.y-1][j+Shape_Structer.x]=Model[i][j];
+                                                        Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
                                                 }
                                         }
                                 }

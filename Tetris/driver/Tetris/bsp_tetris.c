@@ -222,7 +222,7 @@ void  Tetris_Rotate(void)
                                         {
                                                 if(Model[i][j]!=0)
                                                 {
-                                                        Board[i+Shape_Structer.y-1][j+Shape_Structer.x]=Model[i][j];
+                                                        Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
                                                 }
                                         }
                                 }
@@ -237,8 +237,12 @@ void  Tetris_Rotate(void)
         {
                 for(j=0;j<4;j++)
                 {
-                        Board[i+Shape_Structer.y][j+Shape_Structer.x]=temp[i][j];
                         Model[i][j]=temp[i][j];
+                        if(temp[i][j]!=0)
+                        {
+                                Board[i+Shape_Structer.y][j+Shape_Structer.x]=temp[i][j];
+                        }
+                        
                 }
         }
 }
