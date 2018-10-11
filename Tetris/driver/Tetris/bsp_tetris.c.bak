@@ -571,7 +571,7 @@ void Clean_Reset(void)
 
 void Clean_Line(void)
 {
-        u8 i,j,k,count=0,clean[4]={0};
+        u8 i,j,k,line;
         //扫描是否可以清行
         for(i=0;i<18;i++)
         {
@@ -584,31 +584,28 @@ void Clean_Line(void)
                 }
                 if(j==10)
                 {
-                        clean[count]=i;
-                        count++;
-                        printf("i=%d",i);
+//                        clean[count]=i;
+//                        count++;
+//                        printf("i=%d",i);
+                        line=i;
+                        printf("line=%d\n",line);
                 }
                  
         }
-        
-        //清行之后上面的往下掉
-        for(k=0;k<count;k++)
+        //新的下降算法
+        for(k=line;k>0;k--)
         {
-                for(i=clean[k]-1;i>0;i--)
-                {
-                        for(j=0;j<10;j++)
-                        {
-                                Board[clean[k]][j] = Board[clean[k]-1][j];
-                        }
-                }
-                
+//                printf("[%s][%d]\r\n", __func__, __LINE__);
                 for(j=0;j<10;j++)
                 {
-                        Board[0][j]=0;
+                        Board[k][j]=Board[k-1][j];
                 }
-                
         }
-//        printf("[%s][%d]\r\n", __func__, __LINE__);
+        for(j=0;j<10;j++)
+        {
+                Board[0][j]=0;
+        }
+
         /*
         switch (count)
         {
