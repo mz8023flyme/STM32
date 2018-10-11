@@ -17,11 +17,11 @@
 #define KEY_DOWN_GPIO_PORT          GPIOC
 #define KEY_DOWN_GPIO_CLK           RCC_APB2Periph_GPIOC
 
-#define KEY_PAUSE_GPIO_PIN           GPIO_Pin_10
+#define KEY_PAUSE_GPIO_PIN           GPIO_Pin_9
 #define KEY_PAUSE_GPIO_PORT          GPIOC
 #define KEY_PAUSE_GPIO_CLK           RCC_APB2Periph_GPIOC
 
-#define KEY_RESET_GPIO_PIN           GPIO_Pin_9
+#define KEY_RESET_GPIO_PIN           GPIO_Pin_10
 #define KEY_RESET_GPIO_PORT          GPIOC
 #define KEY_RESET_GPIO_CLK           RCC_APB2Periph_GPIOC
 
@@ -36,7 +36,6 @@
 
 void KEY_GPIO_Config(void);
 uint8_t Key_Scan(GPIO_TypeDef *GPIOx,uint16_t GPIO_Pin);
-void Key_scan(void);
 
 
 #endif /* _BSP_KEY_H */

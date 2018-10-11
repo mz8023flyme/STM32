@@ -11,14 +11,15 @@
 #include "bsp_tetris.h"
 #include "bsp_adc.h"
 #include "bsp_key.h"
+#include "bsp_exit.h"
 
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
 
 
-
-
+extern u8 Down_Flag;
+extern u8 Pause_Flag;
 
 u8 Make_Random (void);
 void Key_Board_Scan(void);

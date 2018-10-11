@@ -3,22 +3,73 @@
 #include "main.h"
 
 
-u16 Time ; 
-
+static u16 Time ; 
+static u16 Down_Time_F ; 
 void  BASIC_TIM_IRQHandler (void)
 {
 //        printf("[%s][%d]\r\n", __func__, __LINE__);
         if ( TIM_GetITStatus( BASIC_TIM, TIM_IT_Update) != RESET ) 
         {
-                Time++;
-                if(Time>=1000)
+                if(!Pause_Flag)
                 {
-                        Time=0;
-                        Tetris_Dowm();
+                        if(Down_Flag==0)
+                        {
+                                Down_Time_F=0;
+                                Time++;
+                                if(Time>=1000)
+                                {
+                                        Time=0;
+                                        Tetris_Dowm(); 
+                                }
+                        }
+                        else
+                        {
+                                Time=0;
+                                Down_Time_F++;
+                                if(Down_Time_F>=5)//此数字较大则下降为快速下降，较小为瞬间到底
+                                {
+                                        Down_Time_F=0;
+                                        
+                                        Tetris_Dowm();
+                                }
+                        }
                 }
         }
-        TIM_ClearITPendingBit(BASIC_TIM , TIM_FLAG_Update);     
+        TIM_ClearITPendingBit(BASIC_TIM , TIM_FLAG_Update);
 }
+
+
+void EXTI9_5_IRQHandler()
+{
+        if(EXTI_GetITStatus(EXTI_Line7) != RESET)
+        {
+//                delay_ms(10);
+//                if(EXTI_GetITStatus(EXTI_Line7) != RESET)
+//                {
+                        printf("KEY_DOWN\n");
+                        Down_Flag=1;
+//                }
+                
+        }
+        EXTI_ClearITPendingBit(EXTI_Line7);
+        
+        if(EXTI_GetITStatus(EXTI_Line9) != RESET)
+        {
+//                delay_ms(10);
+//                if(EXTI_GetITStatus(EXTI_Line9) != RESET)
+//                {
+                        printf("KEY_pause\n");
+                        Pause_Flag=!Pause_Flag;
+//                        if(Pause_Flag)
+//                                TIM_Cmd(BASIC_TIM, DISABLE);
+//                        else
+//                                TIM_Cmd(BASIC_TIM, ENABLE);
+//                }
+                
+        }
+         EXTI_ClearITPendingBit(EXTI_Line9);
+}
+
 
 void ADC_IRQHandler(void)
 { 

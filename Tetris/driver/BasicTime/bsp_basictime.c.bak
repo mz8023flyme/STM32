@@ -78,7 +78,7 @@ static void BASIC_TIM_Mode_Config(void)
  */
 void BASIC_TIM_Init(void)
 {
-	BASIC_TIM_NVIC_Config();
-	BASIC_TIM_Mode_Config();
+        BASIC_TIM_NVIC_Config();
+        BASIC_TIM_Mode_Config();
 }
 

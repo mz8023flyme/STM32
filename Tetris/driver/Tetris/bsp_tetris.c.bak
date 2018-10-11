@@ -1,7 +1,7 @@
 #include "bsp_tetris.h"
 
 u16 Tetris[19]={0x0F00,0x4444,0x0660,0x4460,0x02E0,0x6220,0x0740,0x2260,0x0E20,0x6440,0x0470,0x0C60,0x2640,0x0360,0x4620,0x04E0,0x2620,0x0E40,0x4640};
-u8 Board[19][10]={{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{1,1,1,1,1,1,1,1,1,1}};
+u8 Board[19][10] = {{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{1,1,1,1,1,1,1,1,1,1}};
 u8 Model[4][4]={0};
 u8 Color=1;
 
@@ -20,7 +20,7 @@ void Creat_Shap(void)
         Shape_Structer.CurNum = Shape_Structer.NextNum;
         Shape_Structer.NextNum = Make_Random();
         Shape_Structer.x = 3 ;
-        Shape_Structer.y = 0;
+        Shape_Structer.y = 0 ;
         temp =  Tetris[Shape_Structer.CurNum ];
         
         //取出形状放在模型框中
@@ -31,12 +31,12 @@ void Creat_Shap(void)
                         if(temp & 0x8000)
                         {
                                 Model[i][j]= 1 * Color;
-                                printf("*");
+//                                printf("*");
                         }
                         else
                         {
                                 Model[i][j]= 0;
-                                printf("-");
+//                                printf("-");
                         }
                         temp<<=1;
                         
@@ -156,13 +156,16 @@ void Tetris_Dowm()
                                                 }
                                         }
                                 }
+                                Clean_Line();
+//                                printf("[%s][%d]\r\n", __func__, __LINE__);
+                                Down_Flag=0;
                                 Creat_Shap();
                                 return;
                         }
                 }
                 
         }
-        printf("[%s][%d]\r\n", __func__, __LINE__);
+        
 
         for(i=0;i<4;i++)
         {
@@ -523,12 +526,54 @@ void  Tetris_Left(void)
         
 }
 
+void Clean_Reset(void)
+{
+        u8 i,j ;
+        u16 temp;
+        LCD_Clear(0,49,150,270,BLACK);
+                        
+        for(i=0;i<18;i++)
+        {
+                for(j=0;j<10;j++)
+                {
+                        Board[i][j]=0;
+                }
+        }
+        for(j=0;j<10;j++)
+        {
+                Board[18][j]=1;
+        }
+        Shape_Structer.y = 0;
+        Shape_Structer.x = 3;
+        Shape_Structer.CurNum = Shape_Structer.NextNum;
+        Shape_Structer.NextNum = Make_Random();
+        temp =  Tetris[Shape_Structer.CurNum ];
+        
+        //取出形状放在模型框中
+        for(i=0;i<4;i++)
+        {
+                for(j=0;j<4;j++)
+                {
+                        if(temp & 0x8000)
+                        {
+                                Model[i][j]= 1 * Color;
+                        }
+                        else
+                        {
+                                Model[i][j]= 0;
+                        }
+                        temp<<=1;
+                        
+                }
+
+        }
+}
 
 void Clean_Line(void)
 {
         u8 i,j,k,count=0,clean[4]={0};
         //扫描是否可以清行
-        for(i=0;i<15;i++)
+        for(i=0;i<18;i++)
         {
                 for(j=0;j<10;j++)
                 {
@@ -541,7 +586,9 @@ void Clean_Line(void)
                 {
                         clean[count]=i;
                         count++;
+                        printf("i=%d",i);
                 }
+                 
         }
         
         //清行之后上面的往下掉
@@ -561,7 +608,7 @@ void Clean_Line(void)
                 }
                 
         }
-        
+//        printf("[%s][%d]\r\n", __func__, __LINE__);
         /*
         switch (count)
         {

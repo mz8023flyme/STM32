@@ -13,15 +13,15 @@ void KEY_GPIO_Config()
 
         GPIO_InitStruct.GPIO_Pin = KEY_RIGHT_GPIO_PIN;
         GPIO_Init(KEY_RIGHT_GPIO_PORT, &GPIO_InitStruct);
-        
+        /*
         GPIO_InitStruct.GPIO_Pin = KEY_DOWN_GPIO_PIN;
         GPIO_Init(KEY_DOWN_GPIO_PORT, &GPIO_InitStruct);
         
-        GPIO_InitStruct.GPIO_Pin = KEY_RESET_GPIO_PIN;
-        GPIO_Init(KEY_RESET_GPIO_PORT, &GPIO_InitStruct);
-        
         GPIO_InitStruct.GPIO_Pin = KEY_PAUSE_GPIO_PIN;
         GPIO_Init(KEY_PAUSE_GPIO_PORT, &GPIO_InitStruct);
+        */
+        GPIO_InitStruct.GPIO_Pin = KEY_RESET_GPIO_PIN;
+        GPIO_Init(KEY_RESET_GPIO_PORT, &GPIO_InitStruct);
         
         GPIO_InitStruct.GPIO_Pin = KEY_ROTATE_GPIO_PIN;
         GPIO_Init(KEY_ROTATE_GPIO_PORT, &GPIO_InitStruct);

@@ -12,16 +12,16 @@
 #define KEY_RIGHT_GPIO_PIN           GPIO_Pin_8
 #define KEY_RIGHT_GPIO_PORT          GPIOC
 #define KEY_RIGHT_GPIO_CLK           RCC_APB2Periph_GPIOC
-
+/*
 #define KEY_DOWN_GPIO_PIN           GPIO_Pin_7
 #define KEY_DOWN_GPIO_PORT          GPIOC
 #define KEY_DOWN_GPIO_CLK           RCC_APB2Periph_GPIOC
 
-#define KEY_PAUSE_GPIO_PIN           GPIO_Pin_10
+#define KEY_PAUSE_GPIO_PIN           GPIO_Pin_9
 #define KEY_PAUSE_GPIO_PORT          GPIOC
 #define KEY_PAUSE_GPIO_CLK           RCC_APB2Periph_GPIOC
-
-#define KEY_RESET_GPIO_PIN           GPIO_Pin_9
+*/
+#define KEY_RESET_GPIO_PIN           GPIO_Pin_10
 #define KEY_RESET_GPIO_PORT          GPIOC
 #define KEY_RESET_GPIO_CLK           RCC_APB2Periph_GPIOC
 
