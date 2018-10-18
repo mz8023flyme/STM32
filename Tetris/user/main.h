@@ -20,10 +20,11 @@
 
 extern u8 Down_Flag;
 extern u8 Pause_Flag;
-
+extern u8 Game_Over_flag;
+extern u16 Score;
 u8 Make_Random (void);
 void Key_Board_Scan(void);
-
+void Reset_Game(void);
 
 #endif   /* __MAIN_H_ */
 

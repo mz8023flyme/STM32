@@ -5,13 +5,13 @@
 
 Shape Shape_Structer={0};
 u8 Down_Flag=0;
-
-
+u8 Pause_Flag=0;
+u8 Game_Over_flag=0;
+u16 Score=0;
 
 int main(void)
 {
-        
-        
+        char Score_str[5]={0};
         NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
         
         systick_init();
@@ -20,12 +20,12 @@ int main(void)
         LCD_Init();
         printf("[%s][%d]\r\n", __func__, __LINE__);
         LCD_SetColors(RED,BLACK);
-        LCD_Clear(0,0,240,320,GREY);   //清屏
-        LCD_DrawLine(0,49,151,49);      //设置游戏区
-        LCD_DrawLine(151,48,151,320);   //设置游戏区
+        LCD_Clear(0,0,240,320,BLACK);   //清屏
+        LCD_DrawLine(0,49,150,49);      //设置游戏区
+        LCD_DrawLine(150,49,150,320);   //设置游戏区
         LCD_SetTextColor(BLUE);
         LCD_DisplayStringEx(40,10,32,32,(uint8_t *)"俄罗斯方块",0);
-        
+        LCD_DisplayStringEx(163,50,32,32,(uint8_t *)"分数",0);
         
         Shape_Structer.CurNum = Make_Random();
         Shape_Structer.NextNum = Make_Random();
@@ -33,19 +33,22 @@ int main(void)
         BASIC_TIM_Init();
         KEY_GPIO_Config();
         EXTI_KEY_Init();
-        Creat_Shap( );
+        Creat_Shap();
+        
         while(1)
         {
-                
-                LCD_Tetris_Show();
-                Key_Board_Scan();
-//                printf("[%s][%d]\r\n", __func__, __LINE__);
-//                printf("\n\n\n\n");
-                delay_ms(100);
+                Reset_Game();
+                if(0==Game_Over_flag)
+                {
+                        LCD_Tetris_Show();
+                        Key_Board_Scan();
+                        sprintf(Score_str,"%04d",Score);
+                        LCD_SetTextColor(RED);
+                        LCD_DisplayStringEx(163,90,32,32,(uint8_t *)Score_str,0);
+                        delay_ms(100);
+                }
         }
 }
-
-
 
 void Key_Board_Scan(void)
 {
@@ -99,17 +102,7 @@ void Key_Board_Scan(void)
                 }
         }
         */
-        if(Key_Scan(KEY_RESET_GPIO_PORT,KEY_RESET_GPIO_PIN)==KEY_ON)
-        {
-                delay_ms(10);
-                if(Key_Scan(KEY_RESET_GPIO_PORT,KEY_RESET_GPIO_PIN)==KEY_ON)
-                {
-                        //复位函数
-                        Clean_Reset();
-                        Pause_Flag=0;
-                        TIM_Cmd(BASIC_TIM, ENABLE);
-                }
-        }
+        
 
         if(Key_Scan(KEY_ROTATE_GPIO_PORT,KEY_ROTATE_GPIO_PIN)==KEY_ON)
         {
@@ -117,7 +110,25 @@ void Key_Board_Scan(void)
                 if(Key_Scan(KEY_ROTATE_GPIO_PORT,KEY_ROTATE_GPIO_PIN)==KEY_ON)
                 {
                         //变形函数
+                        if(!Pause_Flag)
                         Tetris_Rotate();
+                }
+        }
+}
+
+void Reset_Game(void)
+{
+        if(Key_Scan(KEY_RESET_GPIO_PORT,KEY_RESET_GPIO_PIN)==KEY_ON)
+        {
+                delay_ms(10);
+                if(Key_Scan(KEY_RESET_GPIO_PORT,KEY_RESET_GPIO_PIN)==KEY_ON)
+                {
+                        //复位函数
+                        Clean_Reset();
+                        Score=0;
+                        Pause_Flag=0;
+                        Game_Over_flag=0;
+                        TIM_Cmd(BASIC_TIM, ENABLE);
                 }
         }
 }

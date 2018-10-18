@@ -43,28 +43,19 @@ void EXTI9_5_IRQHandler()
 {
         if(EXTI_GetITStatus(EXTI_Line7) != RESET)
         {
-//                delay_ms(10);
-//                if(EXTI_GetITStatus(EXTI_Line7) != RESET)
-//                {
-                        printf("KEY_DOWN\n");
-                        Down_Flag=1;
-//                }
+                printf("KEY_DOWN\n");
+                Down_Flag=1;
+                delay_ms(50);
+
                 
         }
         EXTI_ClearITPendingBit(EXTI_Line7);
         
         if(EXTI_GetITStatus(EXTI_Line9) != RESET)
         {
-//                delay_ms(10);
-//                if(EXTI_GetITStatus(EXTI_Line9) != RESET)
-//                {
-                        printf("KEY_pause\n");
-                        Pause_Flag=!Pause_Flag;
-//                        if(Pause_Flag)
-//                                TIM_Cmd(BASIC_TIM, DISABLE);
-//                        else
-//                                TIM_Cmd(BASIC_TIM, ENABLE);
-//                }
+                printf("KEY_pause\n");
+                Pause_Flag=!Pause_Flag;
+                delay_ms(50);
                 
         }
          EXTI_ClearITPendingBit(EXTI_Line9);

@@ -3,7 +3,7 @@
 
 
 #include "main.h"
-
+#include "bsp_lcd.h"
 
 typedef struct
 {
@@ -24,7 +24,7 @@ void Tetris_Rotate(void);
 void Tetris_Right(void);
 void Tetris_Left(void);
 void Clean_Line(void);
-void Clean_Reset(void)
+void Clean_Reset(void);
 
 
 #endif /*__BSP_TETRIS_H*/

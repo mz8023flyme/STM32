@@ -21,7 +21,7 @@ void Creat_Shap(void)
         Shape_Structer.NextNum = Make_Random();
         Shape_Structer.x = 3 ;
         Shape_Structer.y = 0 ;
-        temp =  Tetris[Shape_Structer.CurNum ];
+        
         
         //取出形状放在模型框中
         for(i=0;i<4;i++)
@@ -31,38 +31,37 @@ void Creat_Shap(void)
                         if(temp & 0x8000)
                         {
                                 Model[i][j]= 1 * Color;
-//                                printf("*");
                         }
                         else
                         {
                                 Model[i][j]= 0;
-//                                printf("-");
                         }
                         temp<<=1;
                         
                 }
-                printf("\n");
         }
         //将模型框中的形状变化到显示层
         for(i=0;i<4;i++)
         {
                 for(j=0;j<4;j++)
                 {
-                        if( (Model[i][j]!=0) && (Board[i][j+3]!=0))
+                        if(Model[i][j]!=0)
                         {
-                                printf("Gameover\n");
-                                
-                        }
-                        else
-                        {
-                                Board[i][j+3] = Model[i][j];
-                                
+                                if(Board[i][j+Shape_Structer.x]!=0)
+                                {
+                                        printf("Gameover\n");
+                                        LCD_SetTextColor(GREEN);
+                                        LCD_DisplayStringEx(11,120,32,32,"游戏结束",0);
+                                        TIM_Cmd(BASIC_TIM, DISABLE);
+                                        Game_Over_flag=1;
+                                }
+                                else
+                                {
+                                        Board[i][j+3] = Model[i][j];
+                                }
                         }
                 }
-                 
-        }  
-        
-        
+        }
 }
 
 void LCD_Tetris_Show(void)
@@ -85,43 +84,14 @@ void LCD_Tetris_Show(void)
                         }
                 }
         }
-//        for(i=0;i<16;i++)
-//        {
-//                for(j=0;j<10;j++)
-//                {
-//                        if(Board[i][j]!=0)
-//                        {
-//                                printf("*");
-//                        }else{
-//                                printf("-");
-//                        }
-//                }
-//                printf("\n");
-//        }
 }
-
-
-//void Tetris_Game(void)
-//{
-//        u8 i,j,temp; 
-//        
-//        for(i=0;i<4;i++)
-//        {
-//                for(j=0;j<4;j++)
-//                {
-//                        
-//                }
-//                
-//        }
-//        
-//}
 
 
 
 
 void Tetris_Dowm()
 {
-        u8 i,j; 
+        u8 i,j;
         
         Shape_Structer.y ++;
         
@@ -157,10 +127,6 @@ void Tetris_Dowm()
                                         }
                                 }
                                 Clean_Line();
-                                Clean_Line();
-                                Clean_Line();
-                                Clean_Line();
-//                                printf("[%s][%d]\r\n", __func__, __LINE__);
                                 Down_Flag=0;
                                 Creat_Shap();
                                 return;
@@ -189,6 +155,13 @@ void  Tetris_Rotate(void)
 {
         u8 i,j;
         u16 temp[4][4];
+        if(Shape_Structer.CurNum==2)
+        {
+                //如果是正方形不需要变形
+                return ;
+        }
+        
+        
         //檫除原来图形
         for(i=0;i<4;i++)
         {
@@ -245,14 +218,21 @@ void  Tetris_Rotate(void)
                         
                 }
         }
+        //确定了可以旋转则处理下长条的特殊情况，否则长条可能不能到最边上
+        if(Shape_Structer.CurNum==0)
+        {
+                Shape_Structer.CurNum=1;
+        }
+        else if(Shape_Structer.CurNum==1)
+        {
+                Shape_Structer.CurNum=0;
+        }
 }
-
 
 void  Tetris_Right(void)
 {
         u8 i,j;
-        
-        
+//        u8 count;
         //檫除原来图形
         for(i=0;i<4;i++)
         {
@@ -270,9 +250,10 @@ void  Tetris_Right(void)
         {
                 if(Shape_Structer.CurNum!=0)
                 {
+                        
                         for(i=0;i<4;i++)
                         {
-                                if(Model[i][3]!=0)
+                                if(Model[i][3]!=0||Board[i+Shape_Structer.y][9]!=0)
                                 {
                                         //还原
                                         for(i=0;i<4;i++)
@@ -300,7 +281,10 @@ void  Tetris_Right(void)
                         {
                                 for(j=0;j<4;j++)
                                 {
-                                        Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
+                                        if(Model[i][j]!=0)
+                                        {
+                                                Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
+                                        }
                                 }
                         }
                         return ;
@@ -330,22 +314,43 @@ void  Tetris_Right(void)
                         {
                                 if(Model[i][0]!=0)
                                 {
-                                        
+//                                        count=0;
                                         for(i=0;i<4;i++)
                                         {
-                                                for(j=3;j>0;j--)
+                                                for(j=2;j<4;j++)
                                                 {
-                                                        Model[i][j]= Model[i][j-1];
+                                                        if(Model[i][j-1]!=0 && Board[i+Shape_Structer.y][j]!=0)
+                                                        {
+//                                                                break;
+                                                                goto AAA;
+                                                        }
+//                                                        count++;
                                                 }
                                         }
-                                        Model[0][0]=Model[1][0]=Model[2][0]=Model[3][0]=0;
-                                        for(i=0;i<4;i++)
+//                                        printf("count = %d\n",count);
+//                                        if(count==8)
+//                                        {
+                                                for(i=0;i<4;i++)
+                                                {
+                                                        for(j=3;j>0;j--)
+                                                        {
+                                                                Model[i][j]= Model[i][j-1];
+                                                        }
+                                                }
+                                                Model[0][0]=Model[1][0]=Model[2][0]=Model[3][0]=0;
+//                                        }
+                                        
+                                        AAA:   for(i=0;i<4;i++)
                                         {
                                                 for(j=0;j<4;j++)
                                                 {
-                                                        Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
+                                                        if(Model[i][j]!=0)
+                                                        {
+                                                                Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
+                                                        }
                                                 }
                                         }
+                                       
                                         return;
                                 }
                         }
@@ -361,13 +366,14 @@ void  Tetris_Right(void)
                         if( Model[i][j]!=0 && Board[i+Shape_Structer.y][j+Shape_Structer.x]!=0)
                         {
                                 //右边已经有东西了 还原刚被清空的图形 
+                                Shape_Structer.x--;
                                 for(i=0;i<4;i++)
                                 {
                                         for(j=0;j<4;j++)
                                         {
                                                 if(Model[i][j]!=0)
                                                 {
-                                                        Board[i+Shape_Structer.y][j+Shape_Structer.x-1]=Model[i][j];
+                                                        Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
                                                 }
                                         }
                                 }
@@ -395,7 +401,6 @@ void  Tetris_Left(void)
 {
         u8 i,j;
         
-        
         //檫除原来图形
         for(i=0;i<4;i++)
         {
@@ -415,7 +420,7 @@ void  Tetris_Left(void)
                 {
                         for(i=0;i<4;i++)
                         {
-                                if(Model[i][0]!=0)
+                                if(Model[i][0]!=0||Board[i+Shape_Structer.y][0]!=0)
                                 {
                                         //还原
                                         for(i=0;i<4;i++)
@@ -443,7 +448,10 @@ void  Tetris_Left(void)
                         {
                                 for(j=0;j<4;j++)
                                 {
-                                        Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
+                                        if(Model[i][j]!=0)
+                                        {
+                                                Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
+                                        }
                                 }
                         }
                         return ;
@@ -476,22 +484,36 @@ void  Tetris_Left(void)
                                         
                                         for(i=0;i<4;i++)
                                         {
+                                                for(j=0;j<2;j++)
+                                                {
+                                                        if(Model[i][j+1]!=0 && Board[i+Shape_Structer.y][j+Shape_Structer.x]!=0)
+                                                        {
+                                                                goto BBB;
+                                                        }
+                                                }
+                                        }
+                                        for(i=0;i<4;i++)
+                                        {
                                                 for(j=0;j<3;j++)
                                                 {
                                                         Model[i][j]= Model[i][j+1];
                                                 }
                                         }
                                         Model[0][3]=Model[1][3]=Model[2][3]=Model[3][3]=0;
+                                        
+                                        BBB:
                                         for(i=0;i<4;i++)
                                         {
                                                 for(j=0;j<4;j++)
                                                 {
-                                                        Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
+                                                        if(Model[i][j]!=0)
+                                                        {
+                                                                Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
+                                                        }
                                                 }
                                         }
                                         return;
                                 }
-                                
                         }
                 }
         }
@@ -503,7 +525,8 @@ void  Tetris_Left(void)
                 {
                         if( Model[i][j]!=0 && Board[i+Shape_Structer.y][j+Shape_Structer.x]!=0)
                         {
-                                //右边已经有东西了 还原刚被清空的图形 
+                                //左边边已经有东西了 还原刚被清空的图形 
+                                Shape_Structer.x++;
                                 for(i=0;i<4;i++)
                                 {
                                         for(j=0;j<4;j++)
@@ -537,7 +560,7 @@ void Clean_Reset(void)
 {
         u8 i,j ;
         u16 temp;
-        LCD_Clear(0,49,150,270,BLACK);
+        LCD_Clear(0,51,150,270,BLACK);
                         
         for(i=0;i<18;i++)
         {
@@ -546,10 +569,10 @@ void Clean_Reset(void)
                         Board[i][j]=0;
                 }
         }
-        for(j=0;j<10;j++)
-        {
-                Board[18][j]=1;
-        }
+//        for(j=0;j<10;j++)
+//        {
+//                Board[18][j]=1;
+//        }
         Shape_Structer.y = 0;
         Shape_Structer.x = 3;
         Shape_Structer.CurNum = Shape_Structer.NextNum;
@@ -564,6 +587,7 @@ void Clean_Reset(void)
                         if(temp & 0x8000)
                         {
                                 Model[i][j]= 1 * Color;
+                                Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
                         }
                         else
                         {
@@ -579,46 +603,60 @@ void Clean_Reset(void)
 void Clean_Line(void)
 {
         u8 i,j,k,line;
-        //扫描是否可以清行
-        for(i=0;i<18;i++)
+        u8 cnt,Grade=0;
+        for(cnt=0;cnt<4;cnt++)
         {
-                for(j=0;j<10;j++)
+                //扫描是否可以清行
+                for(i=17;i>0;i--)
                 {
-                        if(Board[i][j] == 0)
+                        for(j=0;j<10;j++)
                         {
+                                if(Board[i][j] == 0)//只要进if代表不可以清行
+                                {
+                                        break;
+                                }
+                        }
+                        if(j==10)//只要进if代表可以清行//下降算法
+                        {
+                                line=i;
+                                printf("line=%d\n",line);
+                                Grade++;
+                                for(k=line;k>0;k--)
+                                {
+                                        for(j=0;j<10;j++)
+                                        {
+                                                Board[k][j]=Board[k-1][j];
+                                        }
+                                }
+                                for(j=0;j<10;j++)
+                                {
+                                        Board[0][j]=0;
+                                }
                                 break;
                         }
                 }
-                if(j==10)
-                {
-//                        clean[count]=i;
-//                        count++;
-//                        printf("i=%d",i);
-                        line=i;
-                        printf("line=%d\n",line);
-                }
-                 
+                
         }
-        //新的下降算法
-        for(k=line;k>0;k--)
+        
+        printf("Grade=%d\n",Grade);
+        
+        switch (Grade)
         {
-//                printf("[%s][%d]\r\n", __func__, __LINE__);
-                for(j=0;j<10;j++)
-                {
-                        Board[k][j]=Board[k-1][j];
-                }
+                case 1:
+                        Score+=1;   //分数1
+                break;
+                case 2:
+                        Score+=3;
+                break;
+                case 3:
+                        Score+=5;
+                break;
+                case 4:
+                        Score+=10;
+                default:
+                        break;
         }
-        for(j=0;j<10;j++)
-        {
-                Board[0][j]=0;
-        }
-
-        /*
-        switch (count)
-        {
-                case 1: //分数1
-        }
-        */
+        
         
 }
 

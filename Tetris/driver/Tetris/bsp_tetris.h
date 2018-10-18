@@ -1,9 +1,7 @@
 #ifndef  __BSP_TETRIS_H
 #define  __BSP_TETRIS_H
 
-
 #include "main.h"
-
 
 typedef struct
 {
