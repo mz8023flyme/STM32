@@ -43,7 +43,6 @@ void EXTI9_5_IRQHandler()
 {
         if(EXTI_GetITStatus(EXTI_Line7) != RESET)
         {
-                printf("KEY_DOWN\n");
                 Down_Flag=1;
                 delay_ms(50);
 
@@ -53,7 +52,6 @@ void EXTI9_5_IRQHandler()
         
         if(EXTI_GetITStatus(EXTI_Line9) != RESET)
         {
-                printf("KEY_pause\n");
                 Pause_Flag=!Pause_Flag;
                 delay_ms(50);
                 

@@ -3,14 +3,15 @@
 
 #include "main.h"
 
+
 typedef struct
 {
         u8 x; 
         u8 y; 
-        u16 Right; 
-        u16 Down; 
         u8 CurNum; 
         u8 NextNum; 
+        u8 Color;
+        u8 NextColor;
 }Shape;
 
 
@@ -23,7 +24,7 @@ void Tetris_Right(void);
 void Tetris_Left(void);
 void Clean_Line(void);
 void Clean_Reset(void);
-
+void Set_Tetris_Color(void);
 
 #endif /*__BSP_TETRIS_H*/
 

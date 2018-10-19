@@ -3,7 +3,8 @@
 u16 Tetris[19]={0x0F00,0x4444,0x0660,0x4460,0x02E0,0x6220,0x0740,0x2260,0x0E20,0x6440,0x0470,0x0C60,0x2640,0x0360,0x4620,0x04E0,0x2620,0x0E40,0x4640};
 u8 Board[19][10] = {{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{0},{1,1,1,1,1,1,1,1,1,1}};
 u8 Model[4][4]={0};
-u8 Color=1;
+u8 Preview[4][4]={0};
+
 
 extern Shape Shape_Structer;
 
@@ -19,10 +20,10 @@ void Creat_Shap(void)
         u16 temp;
         Shape_Structer.CurNum = Shape_Structer.NextNum;
         Shape_Structer.NextNum = Make_Random();
+        temp=Tetris[Shape_Structer.CurNum];
         Shape_Structer.x = 3 ;
         Shape_Structer.y = 0 ;
-        temp = Tetris[Shape_Structer.CurNum ];
-        
+        Set_Tetris_Color();
         //取出形状放在模型框中
         for(i=0;i<4;i++)
         {
@@ -30,7 +31,7 @@ void Creat_Shap(void)
                 {
                         if(temp & 0x8000)
                         {
-                                Model[i][j]= 1 * Color;
+                                Model[i][j]= Shape_Structer.Color;
                         }
                         else
                         {
@@ -51,7 +52,7 @@ void Creat_Shap(void)
                                 {
                                         printf("Gameover\n");
                                         LCD_SetTextColor(GREEN);
-                                        LCD_DisplayStringEx(11,120,32,32,"游戏结束",0);
+                                        LCD_DisplayStringEx(11,140,32,32,"游戏结束",0);
                                         TIM_Cmd(BASIC_TIM, DISABLE);
                                         Game_Over_flag=1;
                                 }
@@ -62,6 +63,24 @@ void Creat_Shap(void)
                         }
                 }
         }
+        //取出形状放在预览框中
+        temp=Tetris[Shape_Structer.NextNum];
+        for(i=0;i<4;i++)
+        {
+                for(j=0;j<4;j++)
+                {
+                        if(temp & 0x8000)
+                        {
+                                Preview[i][j]= Shape_Structer.NextColor;
+                        }
+                        else
+                        {
+                                Preview[i][j]= 0;
+                        }
+                        temp<<=1;
+                }
+        }
+        printf("Shape_Structer.NextColor =%d",Shape_Structer.NextColor);
 }
 
 void LCD_Tetris_Show(void)
@@ -71,17 +90,68 @@ void LCD_Tetris_Show(void)
         {
                 for(j=0;j<10;j++)
                 {
-                        if(Board[i][j]!=0)
+                        switch(Board[i][j])
                         {
-                                //添加变化颜色的代码
-                                LCD_SetTextColor(RED);
-                                LCD_DrawBlock(j*15,i*15+50);
+                                case 1 :
+                                        LCD_SetTextColor(RED);
+                                break;
+                                case 2 :
+                                        LCD_SetTextColor(WHITE);
+                                break;
+                                case 3 :
+                                        LCD_SetTextColor(BLUE);
+                                break;
+                                case 4 :
+                                        LCD_SetTextColor(YELLOW);
+                                break;
+                                case 5 :
+                                        LCD_SetTextColor(GREEN);
+                                break;
+                                case 6 :
+                                        LCD_SetTextColor(GBLUE);
+                                break;
+                                case 7 :
+                                        LCD_SetTextColor(MAGENTA);
+                                break;
+                                default :
+                                        LCD_SetTextColor(BLACK);
+                                break;
                         }
-                        else
+                        LCD_DrawBlock(j*15,i*15+50);
+                }
+        }
+        for(i=0;i<4;i++)
+        {
+                for(j=0;j<4;j++)
+                {
+                        switch(Preview[i][j])
                         {
-                                LCD_SetTextColor(BLACK);
-                                LCD_DrawBlock(j*15,i*15+50);
+                                case 1 :
+                                        LCD_SetTextColor(RED);
+                                break;
+                                case 2 :
+                                        LCD_SetTextColor(WHITE);
+                                break;
+                                case 3 :
+                                        LCD_SetTextColor(BLUE);
+                                break;
+                                case 4 :
+                                        LCD_SetTextColor(YELLOW);
+                                break;
+                                case 5 :
+                                        LCD_SetTextColor(GREEN);
+                                break;
+                                case 6 :
+                                        LCD_SetTextColor(GBLUE);
+                                break;
+                                case 7 :
+                                        LCD_SetTextColor(MAGENTA);
+                                break;
+                                default :
+                                        LCD_SetTextColor(BLACK);
+                                break;
                         }
+                        LCD_DrawBlock(j*15+165,i*15+150);
                 }
         }
 }
@@ -106,9 +176,6 @@ void Tetris_Dowm()
                         }
                 }
         }
-        
-        
-        
         for(i=0;i<4;i++)
         {
                 for(j=0;j<4;j++)
@@ -575,10 +642,10 @@ void Clean_Reset(void)
 //        }
         Shape_Structer.y = 0;
         Shape_Structer.x = 3;
-        Shape_Structer.CurNum = Shape_Structer.NextNum;
+        Shape_Structer.CurNum = Make_Random();
         Shape_Structer.NextNum = Make_Random();
         temp =  Tetris[Shape_Structer.CurNum ];
-        
+        Set_Tetris_Color();
         //取出形状放在模型框中
         for(i=0;i<4;i++)
         {
@@ -586,7 +653,7 @@ void Clean_Reset(void)
                 {
                         if(temp & 0x8000)
                         {
-                                Model[i][j]= 1 * Color;
+                                Model[i][j]= Shape_Structer.Color;
                                 Board[i+Shape_Structer.y][j+Shape_Structer.x]=Model[i][j];
                         }
                         else
@@ -594,9 +661,24 @@ void Clean_Reset(void)
                                 Model[i][j]= 0;
                         }
                         temp<<=1;
-                        
                 }
-
+        }
+        
+        temp=Tetris[Shape_Structer.NextNum];
+        for(i=0;i<4;i++)
+        {
+                for(j=0;j<4;j++)
+                {
+                        if(temp & 0x8000)
+                        {
+                                Preview[i][j]= Shape_Structer.NextColor;
+                        }
+                        else
+                        {
+                                Preview[i][j]= 0;
+                        }
+                        temp<<=1;
+                }
         }
 }
 
@@ -659,5 +741,138 @@ void Clean_Line(void)
         
         
 }
+
+void Set_Tetris_Color(void)
+{
+        switch(Shape_Structer.CurNum)
+        {
+                case 0 :
+                        Shape_Structer.Color = 1;
+                break;
+                case 1 :
+                        Shape_Structer.Color = 1;
+                break;
+                case 2 :
+                        Shape_Structer.Color = 2;
+                break;
+                case 3 :
+                        Shape_Structer.Color = 3;
+                break;
+                case 4 :
+                        Shape_Structer.Color = 3;
+                break;
+                case 5 :
+                        Shape_Structer.Color = 3;
+                break;
+                case 6 :
+                        Shape_Structer.Color = 3;
+                break;
+                case 7 :
+                        Shape_Structer.Color = 4;
+                break;
+                case 8 :
+                        Shape_Structer.Color = 4;
+                break;
+                case 9 :
+                        Shape_Structer.Color = 4;
+                break;
+                case 10 :
+                        Shape_Structer.Color = 4;
+                break;
+                case 11 :
+                        Shape_Structer.Color = 5;
+                break;
+                case 12 :
+                        Shape_Structer.Color = 5;
+                break;
+                case 13 :
+                        Shape_Structer.Color = 6;
+                break;
+                case 14 :
+                        Shape_Structer.Color = 6;
+                break;
+                case 15 :
+                        Shape_Structer.Color = 7;
+                break;
+                case 16 :
+                        Shape_Structer.Color = 7;
+                break;
+                case 17 :
+                        Shape_Structer.Color = 7;
+                break;
+                case 18 :
+                        Shape_Structer.Color = 7;
+                break;
+                default :
+                        Shape_Structer.Color =0;
+                break;
+        }
+        switch(Shape_Structer.NextNum)
+        {
+                case 0 :
+                        Shape_Structer.NextColor = 1;
+                break;
+                case 1 :
+                        Shape_Structer.NextColor = 1;
+                break;
+                case 2 :
+                        Shape_Structer.NextColor = 2;
+                break;
+                case 3 :
+                        Shape_Structer.NextColor = 3;
+                break;
+                case 4 :
+                        Shape_Structer.NextColor = 3;
+                break;
+                case 5 :
+                        Shape_Structer.NextColor = 3;
+                break;
+                case 6 :
+                        Shape_Structer.NextColor = 3;
+                break;
+                case 7 :
+                        Shape_Structer.NextColor = 4;
+                break;
+                case 8 :
+                        Shape_Structer.NextColor = 4;
+                break;
+                case 9 :
+                        Shape_Structer.NextColor = 4;
+                break;
+                case 10 :
+                        Shape_Structer.NextColor = 4;
+                break;
+                case 11 :
+                        Shape_Structer.NextColor = 5;
+                break;
+                case 12 :
+                        Shape_Structer.NextColor = 5;
+                break;
+                case 13 :
+                        Shape_Structer.NextColor = 6;
+                break;
+                case 14 :
+                        Shape_Structer.NextColor = 6;
+                break;
+                case 15 :
+                        Shape_Structer.NextColor = 7;
+                break;
+                case 16 :
+                        Shape_Structer.NextColor = 7;
+                break;
+                case 17 :
+                        Shape_Structer.NextColor = 7;
+                break;
+                case 18 :
+                        Shape_Structer.NextColor = 7;
+                break;
+                default :
+                        Shape_Structer.NextColor = 0;
+                break;
+        }
+}
+
+
+
 
 
