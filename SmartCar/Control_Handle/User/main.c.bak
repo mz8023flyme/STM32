@@ -46,8 +46,8 @@ int main(void)
                 
                 sprintf(str,"advance_%d_turn_%d_voice_%d_#",advance ,turn ,voice );
                 printf("%s",str);
-                NRF24L01_TxPacket(str);
-                delay_ms(300);
+                NRF24L01_TxPacket((u8*)str);
+                delay_ms(100);
         }
 }
 

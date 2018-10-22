@@ -30,9 +30,9 @@ int main(void)
                 ADC_Value[3] =(float) ADC_ConvertedValue[3]/4096*3.3;
                 ADC_Value[4] =(float) ADC_ConvertedValue[4]/4096*3.3;
 //                printf("\r\n CH0 value = %f V \r\n",ADC_Value[0]);
-                printf("\r\n CH1 value = %f V \r\n",ADC_Value[1]);
-                printf("\r\n CH2 value = %f V \r\n",ADC_Value[2]);
-                printf("\r\n CH3 value = %f V \r\n",ADC_Value[3]);
+//                printf("\r\n CH1 value = %f V \r\n",ADC_Value[1]);
+//                printf("\r\n CH2 value = %f V \r\n",ADC_Value[2]);
+//                printf("\r\n CH3 value = %f V \r\n",ADC_Value[3]);
 //                printf("\r\n CH4 value = %f V \r\n",ADC_Value[4]);
                 
                 advance = ADC_Value[2]/3.3*200+1;   //+1处理1.63v与1.65v带来的偏差
@@ -46,7 +46,7 @@ int main(void)
                 
                 sprintf(str,"advance_%d_turn_%d_voice_%d_#",advance ,turn ,voice );
                 printf("%s",str);
-                NRF24L01_TxPacket(str);
+                NRF24L01_TxPacket((u8*)str);
                 delay_ms(100);
         }
 }

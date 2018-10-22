@@ -79,7 +79,12 @@ void Handle_Control(u8 *buff)
         }
         if(!strcmp("advance", motor))
         {
-//                printf("advance= %d\n",advance);
+                if(advance>100 && Distance<30)
+                {
+                        M1_Revolve(0);
+                        M2_Revolve(0);
+                        return ;
+                }
                 M1_Revolve((advance-100)*2);
                 M2_Revolve((advance-100)*2);
         }

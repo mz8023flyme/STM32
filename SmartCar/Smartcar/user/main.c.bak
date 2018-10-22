@@ -19,7 +19,7 @@ int main(void)
         SPI_bsp_Init();
         NRF_GPIO_Init();
 //        ADCx_Init();
-        TIM8->CCR3 = 15;
+        TIM8->CCR3 = 15; 
         
         Distance = Hcsr04GetLength();
         while(NRF24L01_Check())
@@ -46,7 +46,12 @@ void Handle_Control(u8 *buff)
         int advance=0;
         int turn=0;
         int voice=0;
-        
+        if(Distance<30.0)
+        {
+                M1_Revolve(0);
+                M2_Revolve(0);
+                return ;
+        }
         res = strtok((char*)buff, "_");
         if(res)
         {
@@ -79,7 +84,7 @@ void Handle_Control(u8 *buff)
         }
         if(!strcmp("advance", motor))
         {
-//                printf("advance= %d\n",advance);
+                if(advance>100 && )
                 M1_Revolve((advance-100)*2);
                 M2_Revolve((advance-100)*2);
         }
