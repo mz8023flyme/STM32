@@ -52,6 +52,9 @@
 
 #define SYSTEM_CLOCK 72                                 // 定义系统时钟, 单位MHz
 
+#define PRINTF printf
+//#define PRINTF (...)
+
 void MY_NVIC_Init(u8 NVIC_PreemptionPriority,u8 NVIC_SubPriority,u8 NVIC_Channel);
 void systick_init(void);                                // 初始化延时函数
 void delay_us(u32 nus);                                 // 延时 nus 微秒, 最大延时 1864135us

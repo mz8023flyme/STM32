@@ -6,11 +6,11 @@ u16 msHcCount = 0;//ms计数
 void Hcsr04Init(void)
 {  
         TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;     //生成用于定时器设置的结构体
-
-        GPIO_InitTypeDef GPIO_InitStructure;
+eDef GPIO_InitStructure;
 
         //GPIO初始化
-        RCC_APB2PeriphClockCmd(HCSR04_CLK, ENABLE);
+        RCC_APB2Peri
+        GPIO_InitTypphClockCmd(HCSR04_CLK, ENABLE);
         //TRIG   PB5   输出10us高电平
         GPIO_InitStructure.GPIO_Pin =HCSR04_TRIG;       //发送电平引脚
         GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;

@@ -110,7 +110,7 @@ float Hcsr04GetLength(void )
 
         }
         lengthTemp = sum/2.0;
-        printf("¾àÀëÎª:%.3f CM\n",lengthTemp);
+//        printf("¾àÀëÎª:%.3f CM\n",lengthTemp);
         return lengthTemp;
 
 }
