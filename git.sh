@@ -1,7 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m "updata"
+git commit -m "$1"
 git push all
-
-
-
