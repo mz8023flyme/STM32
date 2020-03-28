@@ -2,7 +2,7 @@
 .\objects\bsp_lcd.o: ..\User\LCD\bsp_lcd.h
 .\objects\bsp_lcd.o: ..\Libraries\CMSIS\stm32f10x.h
 .\objects\bsp_lcd.o: ..\Libraries\CMSIS\core_cm3.h
-.\objects\bsp_lcd.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bsp_lcd.o: D:\Program_Files\MDK\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bsp_lcd.o: ..\Libraries\CMSIS\system_stm32f10x.h
 .\objects\bsp_lcd.o: ..\User\stm32f10x_conf.h
 .\objects\bsp_lcd.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
@@ -32,4 +32,4 @@
 .\objects\bsp_lcd.o: ..\User\font\fonts.h
 .\objects\bsp_lcd.o: ..\User\USART\bsp_usart.h
 .\objects\bsp_lcd.o: ..\User\LED\bsp_led.h
-.\objects\bsp_lcd.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\bsp_lcd.o: D:\Program_Files\MDK\ARM\ARMCC\Bin\..\include\stdio.h

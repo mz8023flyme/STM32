@@ -2,7 +2,7 @@
 .\objects\bsp_touch.o: ..\User\Touch\bsp_touch.h
 .\objects\bsp_touch.o: ..\Libraries\CMSIS\stm32f10x.h
 .\objects\bsp_touch.o: ..\Libraries\CMSIS\core_cm3.h
-.\objects\bsp_touch.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bsp_touch.o: D:\Program_Files\MDK\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bsp_touch.o: ..\Libraries\CMSIS\system_stm32f10x.h
 .\objects\bsp_touch.o: ..\User\stm32f10x_conf.h
 .\objects\bsp_touch.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
@@ -29,8 +29,8 @@
 .\objects\bsp_touch.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\bsp_touch.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\bsp_touch.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
-.\objects\bsp_touch.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\bsp_touch.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\string.h
+.\objects\bsp_touch.o: D:\Program_Files\MDK\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\bsp_touch.o: D:\Program_Files\MDK\ARM\ARMCC\Bin\..\include\string.h
 .\objects\bsp_touch.o: ..\User\LCD\bsp_lcd.h
 .\objects\bsp_touch.o: ..\User\font\fonts.h
 .\objects\bsp_touch.o: ..\User\SPI\bsp_spi.h

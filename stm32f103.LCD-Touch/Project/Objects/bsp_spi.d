@@ -2,7 +2,7 @@
 .\objects\bsp_spi.o: ..\User\SPI\bsp_spi.h
 .\objects\bsp_spi.o: ..\Libraries\CMSIS\stm32f10x.h
 .\objects\bsp_spi.o: ..\Libraries\CMSIS\core_cm3.h
-.\objects\bsp_spi.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\bsp_spi.o: D:\Program_Files\MDK\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\bsp_spi.o: ..\Libraries\CMSIS\system_stm32f10x.h
 .\objects\bsp_spi.o: ..\User\stm32f10x_conf.h
 .\objects\bsp_spi.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
@@ -31,4 +31,4 @@
 .\objects\bsp_spi.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\bsp_spi.o: ..\User\USART\bsp_usart.h
 .\objects\bsp_spi.o: ..\User\LED\bsp_led.h
-.\objects\bsp_spi.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\bsp_spi.o: D:\Program_Files\MDK\ARM\ARMCC\Bin\..\include\stdio.h

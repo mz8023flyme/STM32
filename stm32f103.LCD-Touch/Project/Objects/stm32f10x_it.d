@@ -2,7 +2,7 @@
 .\objects\stm32f10x_it.o: ..\User\stm32f10x_it.h
 .\objects\stm32f10x_it.o: ..\Libraries\CMSIS\stm32f10x.h
 .\objects\stm32f10x_it.o: ..\Libraries\CMSIS\core_cm3.h
-.\objects\stm32f10x_it.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\stm32f10x_it.o: D:\Program_Files\MDK\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\stm32f10x_it.o: ..\Libraries\CMSIS\system_stm32f10x.h
 .\objects\stm32f10x_it.o: ..\User\stm32f10x_conf.h
 .\objects\stm32f10x_it.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
@@ -31,4 +31,4 @@
 .\objects\stm32f10x_it.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\stm32f10x_it.o: ..\User\USART\bsp_usart.h
 .\objects\stm32f10x_it.o: ..\User\LED\bsp_led.h
-.\objects\stm32f10x_it.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\stm32f10x_it.o: D:\Program_Files\MDK\ARM\ARMCC\Bin\..\include\stdio.h

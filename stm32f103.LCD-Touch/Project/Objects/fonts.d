@@ -2,7 +2,7 @@
 .\objects\fonts.o: ..\User\font\fonts.h
 .\objects\fonts.o: ..\Libraries\CMSIS\stm32f10x.h
 .\objects\fonts.o: ..\Libraries\CMSIS\core_cm3.h
-.\objects\fonts.o: D:\Program Files\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\fonts.o: D:\Program_Files\MDK\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\fonts.o: ..\Libraries\CMSIS\system_stm32f10x.h
 .\objects\fonts.o: ..\User\stm32f10x_conf.h
 .\objects\fonts.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
